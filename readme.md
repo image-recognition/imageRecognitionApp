@@ -11,5 +11,5 @@
 	The project will be compatible with iOS devices and I am aiming for High Distinction.
 
 # Compile Instructions 
-
+    The project is not yet functional as we are still in the process of collecting all the required resources.
 # Directory Layout 
