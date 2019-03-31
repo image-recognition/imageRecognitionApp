@@ -6,3 +6,6 @@
 # Saturday, Week 4, 30 March 
 - Added .gitignore file. [Sohil Kaushal, SohilDeakin, 218053209]
 - Added folder for Machine Learning files in the codes folder. [Sohil Kauhsal, SohilDeakin, 218053209]
+
+# Henry notes
+- Missing significant progress recently. Minimum Deakin requirement is 10-14 hours per week per unit.
