@@ -21,3 +21,9 @@
 - Create the ViewControllers for the app. [Shubham Jindal, Jindalsh, 218053165]
 - Set up the history and the list view controllers to display mock data using shared data through AppDelegate. [Shubham Jindal, Jindalsh, 218053165]
 
+# Monday, Week 6, 8 April
+- This project is seriously behind.
+- You both need a minimum 2 days per week to pass under normal circumstances. More for you two.
+- I need to get serious with you here: To catch up, you'll need to do much more. If you're not intending to pass, look into withdrawing from the unit and trying again next year.
+- Both of you: function comments. I made a big fuss about this on the unit site last week. [Henry]
+
