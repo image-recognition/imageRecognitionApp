@@ -1,5 +1,5 @@
 //
-//  HistoryViewController.swift
+//  ListViewController.swift
 //  ImageRecognitionApp
 //
 //  Created by Shubham Jindal on 07/04/19.
@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class HistoryViewController: UITableViewController {
-    var identifiedObjects: [String]!
+class ListViewController: UITableViewController {
+    var savedObjects: [String]!
     
     override func viewWillAppear(_ animated: Bool) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        identifiedObjects = appDelegate.identifiedObjects
+        savedObjects = appDelegate.savedObjects
         
         self.tableView.reloadData()
     }
@@ -32,14 +32,14 @@ class HistoryViewController: UITableViewController {
     
     //Method to return the number of cells
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return identifiedObjects.count
+        return savedObjects.count
     }
     
     //Method to put the data into the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Configure the cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableCell", for: indexPath)
-        cell.textLabel?.text = identifiedObjects[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableCell", for: indexPath)
+        cell.textLabel?.text = savedObjects[indexPath.row]
         return cell
     }
 }

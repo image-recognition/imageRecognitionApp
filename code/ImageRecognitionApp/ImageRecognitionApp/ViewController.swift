@@ -15,6 +15,8 @@ class ViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.identifiedObjects.append("Orange")
         appDelegate.identifiedObjects.append("Apple")
+        appDelegate.savedObjects.append("Orange")
+        appDelegate.savedObjects.append("MacBook Air")
         // Do any additional setup after loading the view, typically from a nib.
     }
 
