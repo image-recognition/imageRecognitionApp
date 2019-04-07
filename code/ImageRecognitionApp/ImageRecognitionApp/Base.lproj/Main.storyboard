@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="plb-LY-WBd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="plb-LY-WBd">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="604" y="-169.56521739130437"/>
         </scene>
-        <!--Hitory-->
+        <!--History View Controller-->
         <scene sceneID="MVd-zc-bL4">
             <objects>
                 <tableViewController id="v2T-bF-7Ha" customClass="HistoryViewController" customModule="ImageRecognitionApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,7 +49,7 @@
                             <outlet property="delegate" destination="v2T-bF-7Ha" id="J3D-Rw-uEt"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Hitory" id="wKP-mQ-7mL"/>
+                    <tabBarItem key="tabBarItem" title="" systemItem="history" id="wKP-mQ-7mL"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tn-cv-zLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -78,7 +78,7 @@
                             <outlet property="delegate" destination="Q3i-gr-zgG" id="O1t-dP-rlE"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="List" id="6ch-X9-fgL"/>
+                    <tabBarItem key="tabBarItem" title="List" image="List 30*30" id="6ch-X9-fgL"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4jn-fG-dhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,4 +105,7 @@
             <point key="canvasLocation" x="-738" y="265"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="List 30*30" width="30" height="30"/>
+    </resources>
 </document>
