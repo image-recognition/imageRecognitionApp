@@ -12,6 +12,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.identifiedObjects.append("Orange")
+        appDelegate.identifiedObjects.append("Apple")
         // Do any additional setup after loading the view, typically from a nib.
     }
 
