@@ -14,5 +14,10 @@
 - This project needs more work to meet the pass hurdle.
 - Include multi-line comments (/* */) before each function, to outline what the function does, any arguments and return types, and how to use it.
 
-
+# Sunday, Week 5, 7 April
+- Intserted a demo ML model downloaded from apple's website to check the working capability. [Sohil Kaushal, SohilDeakin, 218053209]
+- Created the splash screen for the app. [Sohil Kaushal, SohilDeakin, 218053209]
+- Create and set the icons for the tab. [Sohil Kaushal, SohilDeakin, 218053209]
+- Create the ViewControllers for the app. [Shubham Jindal, Jindalsh, 218053165]
+- Set up the history and the list view controllers to display mock data using shared data through AppDelegate. [Shubham Jindal, Jindalsh, 218053165]
 
