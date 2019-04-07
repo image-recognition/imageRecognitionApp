@@ -12,6 +12,7 @@
 		51E9930D224DCE8100767443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E9930B224DCE8100767443 /* Main.storyboard */; };
 		51E9930F224DCE8100767443 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51E9930E224DCE8100767443 /* Assets.xcassets */; };
 		51E99312224DCE8100767443 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E99310224DCE8100767443 /* LaunchScreen.storyboard */; };
+		7B931348225987000062476D /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7B931347225987000062476D /* MobileNet.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		51E9930E224DCE8100767443 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51E99311224DCE8100767443 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51E99313224DCE8100767443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B931347225987000062476D /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				51E99307224DCE8100767443 /* AppDelegate.swift */,
 				51E99309224DCE8100767443 /* ViewController.swift */,
+				7B931347225987000062476D /* MobileNet.mlmodel */,
 				51E9930B224DCE8100767443 /* Main.storyboard */,
 				51E9930E224DCE8100767443 /* Assets.xcassets */,
 				51E99310224DCE8100767443 /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			files = (
 				51E9930A224DCE8100767443 /* ViewController.swift in Sources */,
 				51E99308224DCE8100767443 /* AppDelegate.swift in Sources */,
+				7B931348225987000062476D /* MobileNet.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
