@@ -70,21 +70,20 @@ class ViewController: UIViewController {
      takePicture:
         This function is used to take a picture from the camera view.
      Parameters:
-     _ sender: Since this is an IBAction, the function will be called when the button is clicked.
+        sender:
+            Since this is an IBAction, the function will be called when the button is clicked.
      Returns:
         None
      */
     @IBAction func takePicture(_ sender: Any) {
         
     }
-    //TODO
     /*
      viewDidAppear:
         This is an internal function. Notifies the view controller that its view was added to a view hierarchy.
      Parameters:
-     
-     animated:
-        if true, the view is added to the window using an animation.
+        animated:
+            If true, the view was added to the window using an animation.
      Returns:
         This function does not return any value
      */
@@ -94,7 +93,4 @@ class ViewController: UIViewController {
         //Setting the video layer frame to the camera view boundaries
         videoPreviewLayer?.frame = cameraView!.bounds
     }
-
-
 }
-
