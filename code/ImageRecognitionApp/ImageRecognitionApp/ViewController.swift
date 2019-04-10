@@ -11,15 +11,32 @@ import AVFoundation
 
 class ViewController: UIViewController {
 
+    
+    var session: AVCaptureSession!
+    var stillImageOutput: AVCapturePhotoOutput!
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer!
+    
+    /*
+     viewDidLoad:
+        This function contains the code for the events that will occur after the view had been loaded.
+     Parameters:
+        None
+     Returns:
+        None
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Using a variable for AppDelegate to use the shared data
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        //Preloading the table cells for testing
         appDelegate.identifiedObjects.append("Orange")
         appDelegate.identifiedObjects.append("Apple")
         appDelegate.savedObjects.append("Orange")
         appDelegate.savedObjects.append("MacBook Air")
-        // Do any additional setup after loading the view, typically from a nib.
         
+        //Activating the camera view
         session = AVCaptureSession()
         session.sessionPreset = .medium
         let backCamera =  AVCaptureDevice.default(for: AVMediaType.video)
@@ -38,31 +55,44 @@ class ViewController: UIViewController {
             if session!.canAddOutput(stillImageOutput!) {
                 session!.addOutput(stillImageOutput!)
                 videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
-                videoPreviewLayer.videoGravity =    AVLayerVideoGravity.resizeAspect
-                videoPreviewLayer.connection?.videoOrientation =   AVCaptureVideoOrientation.portrait
+                videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+                videoPreviewLayer.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
                 cameraView.layer.addSublayer(videoPreviewLayer)
                 session!.startRunning()
             }
         }
     }
     
+    //Variable for the camera view
     @IBOutlet weak var cameraView: UIView!
     
+    /*
+     takePicture:
+        This function is used to take a picture from the camera view.
+     Parameters:
+     _ sender: Since this is an IBAction, the function will be called when the button is clicked.
+     Returns:
+        None
+     */
     @IBAction func takePicture(_ sender: Any) {
+        
     }
-    
-    var session: AVCaptureSession!
-    var stillImageOutput: AVCapturePhotoOutput!
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer!
-    
+    //TODO
+    /*
+     viewDidAppear:
+        This is an internal function. Notifies the view controller that its view was added to a view hierarchy.
+     Parameters:
+     
+     animated:
+        if true, the view is added to the window using an animation.
+     Returns:
+        This function does not return any value
+     */
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        //Setting the video layer frame to the camera view boundaries
         videoPreviewLayer?.frame = cameraView!.bounds
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
