@@ -2,7 +2,7 @@
 //  ListViewController.swift
 //  ImageRecognitionApp
 //
-//  Created by Shubham Jindal on 07/04/19.
+//  Created by Shubham Jindal and Sohil Kaushal on 07/04/19.
 //  Copyright © 2019 sjc. All rights reserved.
 //
 

@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         session = AVCaptureSession()
-        session!.sessionPreset = AVCaptureSession.Preset.photo
+        session.sessionPreset = .medium
         let backCamera =  AVCaptureDevice.default(for: AVMediaType.video)
         var error: NSError?
         var input: AVCaptureDeviceInput!
@@ -34,14 +34,13 @@ class ViewController: UIViewController {
         }
         if error == nil && session!.canAddInput(input) {
             session!.addInput(input)
-            stillImageOutput = AVCaptureStillImageOutput()
-            stillImageOutput?.outputSettings = [AVVideoCodecKey:  AVVideoCodecJPEG]
+            stillImageOutput = AVCapturePhotoOutput()
             if session!.canAddOutput(stillImageOutput!) {
                 session!.addOutput(stillImageOutput!)
-                videoPreviewLayer! = AVCaptureVideoPreviewLayer(session: session!)
-                videoPreviewLayer!.videoGravity =    AVLayerVideoGravity.resizeAspect
-                videoPreviewLayer!.connection?.videoOrientation =   AVCaptureVideoOrientation.portrait
-                cameraView.layer.addSublayer(videoPreviewLayer!)
+                videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
+                videoPreviewLayer.videoGravity =    AVLayerVideoGravity.resizeAspect
+                videoPreviewLayer.connection?.videoOrientation =   AVCaptureVideoOrientation.portrait
+                cameraView.layer.addSublayer(videoPreviewLayer)
                 session!.startRunning()
             }
         }
@@ -52,13 +51,13 @@ class ViewController: UIViewController {
     @IBAction func takePicture(_ sender: Any) {
     }
     
-    var session: AVCaptureSession?
-    var stillImageOutput: AVCaptureStillImageOutput?
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    var session: AVCaptureSession!
+    var stillImageOutput: AVCapturePhotoOutput!
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        videoPreviewLayer!.frame = cameraView.bounds
+        videoPreviewLayer?.frame = cameraView!.bounds
     }
     
     override func didReceiveMemoryWarning() {

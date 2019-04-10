@@ -11,18 +11,39 @@ import UIKit
 
 class HistoryViewController: UITableViewController {
     var identifiedObjects: [String]!
-    
+    /*
+     viewWillAppear:
+        This is an internal function. It is called before the view controller's view is about to a views hierarchy
+        and before any animations are configured for showing the view.
+     Parameters:
+        animated:
+            if true, the view is added to the window using an animation.
+     Returns:
+        This function does not return any value
+    */
     override func viewWillAppear(_ animated: Bool) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         identifiedObjects = appDelegate.identifiedObjects
         
         self.tableView.reloadData()
     }
-    
+    /*
+     viewDidLoad:
+        This function contains the code for the event\ts that will occur after the view had been loaded.
+     Parameters:
+        None
+     Returns:
+        None
+    */
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+    /*
+     didRecieveMemoryWarning:
+        This is an internal method and it is never directly called by the application.
+        Instead, this method is invoked by the system determines the amount of available memory is low.
+        This mnethod can also be ovverriden
+    */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
