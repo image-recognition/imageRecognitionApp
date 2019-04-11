@@ -39,6 +39,8 @@
 - Update the build instructions. [Sohil Kaushal, SohilDeakin, 218053209]
 - Update changelog.md. [Shubham Jindal, Jindalsh, 218053165]
 
-# Week 6, Thursday, 11 April [Henry
+# Week 6, Thursday, 11 April [Henry]
 - Good to see yesterday's progress [Henry]
 
+# Week 6, Thursday, 11 April
+- Added support for the latest iOS firmware. [Shubham Jindal, Jindalsh, 218053165]

@@ -12,13 +12,13 @@
 
 # Compile Instructions
     The app is currently working with limited capabilities. The instructions to build it are as follows:
-- An iOS device (as the application uses camera view which cannot be used on a simulator) at iOS 11.1 is required to run the application. We plan to update the deployment target to the latest iOS version by Saturday, 13 April 2019.
+- An iOS device (as the application uses camera view which cannot be used on a simulator) is required to run the application.
 
 - Clone the repo onto your local machine by using
 	```
 		git clone https://github.com/image-recognition/imageRecognitionApp.git
 	```
-- Open the Project in Xcode.(Please note for the moment the build target is set to iOS 11.1).
+- Open the Project in Xcode.
 
 - After, the project has been opened click on the play button on the top left corner of Xcode.
 
