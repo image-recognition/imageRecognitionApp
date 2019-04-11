@@ -38,3 +38,7 @@
 - Added additional comments as per the guidelines posted by Henry. [Sohil Kaushal, SohilDeakin, 218053209]
 - Update the build instructions. [Sohil Kaushal, SohilDeakin, 218053209]
 - Update changelog.md. [Shubham Jindal, Jindalsh, 218053165]
+
+# Week 6, Thursday, 11 April [Henry
+- Good to see yesterday's progress [Henry]
+
