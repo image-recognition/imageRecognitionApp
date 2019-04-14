@@ -23,4 +23,14 @@
 - After, the project has been opened click on the play button on the top left corner of Xcode.
 
 - Click on the prompt to allow camera permissions to the device.
+
 # Directory Layout
+The project at the moment consists of two folders and they are:
+- ImageRecognitionApp [main application folder].
+- Machine Learning Resources [to test out some code].
+
+## ImageRecognitionApp
+	This folder contains the code for the core application and can be compiled using the instructions listed in under the Compile Instructions header.
+
+## Machine Learning Resources
+	This folder contains some test code for Machine Learning written in Python.
