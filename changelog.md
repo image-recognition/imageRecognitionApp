@@ -39,13 +39,18 @@
 - Update the build instructions. [Sohil Kaushal, SohilDeakin, 218053209]
 - Update changelog.md. [Shubham Jindal, Jindalsh, 218053165]
 
-# Week 6, Thursday, 11 April [Henry]
-- Good to see yesterday's progress [Henry]
-
 # Week 6, Thursday, 11 April
+- Feedback: Good to see yesterday's progress [Henry]
 - Added support for the latest iOS firmware. [Shubham Jindal, Jindalsh, 218053165]
 
 # Week 6, Thursday, 14 April
 - Created a new Branch to test out the Machine Learning capabilities. [Sohil Kaushal, SohilDeakin, 218053209]
 - Fixed a few typos in the change-log file. [Sohil Kaushal, SohilDeakin, 218053209]
 - Populated the Directory Layout section in the **readme.md** file. [Sohil Kaushal, SohilDeakin, 218053209]
+
+# Week 7, Monday 15 April
+- Feedback: Good to see some more progress. [Henry]
+- Feedback: I feel your project is falling a bit behind, and you're not putting in enough time to pass. Show me 10-14 hours each per week.. where was it spent? I'd like you to start writing the time taken per changelog item, so that you can see where time is being spent / not being spent enough. [Henry]
+
+
+
