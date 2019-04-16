@@ -52,5 +52,5 @@
 - Feedback: Good to see some more progress. [Henry]
 - Feedback: I feel your project is falling a bit behind, and you're not putting in enough time to pass. Show me 10-14 hours each per week.. where was it spent? I'd like you to start writing the time taken per changelog item, so that you can see where time is being spent / not being spent enough. [Henry]
 
-
-
+# Week 7, Tuesday 16 April
+- Understand the basic functioning of core data persistance and set up the basic data model for the history class. [Shubham Jindal, Jindalsh, 218053165] (6 hours)
