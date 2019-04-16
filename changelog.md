@@ -54,3 +54,4 @@
 
 # Week 7, Tuesday 16 April
 - Understand the basic functioning of core data persistance and set up the basic data model for the history class. [Shubham Jindal, Jindalsh, 218053165] (6 hours)
+- Update constraints to support more screen sizes. [Shubham Jindal, Jindalsh, 218053165] (1.5 hours)
