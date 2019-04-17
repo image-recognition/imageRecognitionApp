@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Object" representedClassName="Object" syncable="YES" codeGenerationType="class">
+    <entity name="HistoryObject" representedClassName="HistoryObject" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Object" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="HistoryObject" positionX="-63" positionY="-18" width="128" height="60"/>
     </elements>
 </model>

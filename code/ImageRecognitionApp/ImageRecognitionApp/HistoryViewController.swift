@@ -8,9 +8,13 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class HistoryViewController: UITableViewController {
-    var identifiedObjects: [String]!
+//    var identifiedObjects: [String]!
+    var historyObjects: [NSManagedObject]!
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     /*
      viewWillAppear:
         This is an in-built function. It is called before the view controller's view is about to a views hierarchy
@@ -22,9 +26,20 @@ class HistoryViewController: UITableViewController {
         This function does not return any value.
     */
     override func viewWillAppear(_ animated: Bool) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        identifiedObjects = appDelegate.identifiedObjects
         
+//        identifiedObjects = appDelegate.identifiedObjects
+        
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "HistoryObject")
+        
+        do {
+            appDelegate.historyObjects = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        historyObjects = appDelegate.historyObjects
         self.tableView.reloadData()
     }
     /*
@@ -66,7 +81,8 @@ class HistoryViewController: UITableViewController {
         The number of rows in section.
     */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return identifiedObjects.count
+//        return identifiedObjects.count
+        return historyObjects.count
     }
     
     /*
@@ -82,8 +98,11 @@ class HistoryViewController: UITableViewController {
     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Configure the cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableCell", for: indexPath)
+//        cell.textLabel?.text = identifiedObjects[indexPath.row]
+        let object = historyObjects[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableCell", for: indexPath)
-        cell.textLabel?.text = identifiedObjects[indexPath.row]
+        cell.textLabel?.text = object.value(forKey: "name") as? String
         return cell
     }
 }

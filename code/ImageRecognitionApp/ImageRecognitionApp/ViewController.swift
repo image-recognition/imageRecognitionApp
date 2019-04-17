@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 class ViewController: UIViewController {
 
@@ -15,6 +16,9 @@ class ViewController: UIViewController {
     var session: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
+    
+    //Using a variable for AppDelegate to use the shared data
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     /*
      viewDidLoad:
@@ -27,14 +31,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Using a variable for AppDelegate to use the shared data
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
         //Preloading the table cells for testing
-        appDelegate.identifiedObjects.append("Orange")
-        appDelegate.identifiedObjects.append("Apple")
+//        appDelegate.identifiedObjects.append("Orange")
+//        appDelegate.identifiedObjects.append("Apple")
         appDelegate.savedObjects.append("Orange")
         appDelegate.savedObjects.append("MacBook Air")
+        
+        //Test cases for core data
+//        self.save(name: "Orange")
+//        self.save(name: "Apple")
+//        self.save(name: "MacBook Air")
         
         //Activating the camera view
         session = AVCaptureSession()
@@ -60,6 +66,33 @@ class ViewController: UIViewController {
                 cameraView.layer.addSublayer(videoPreviewLayer)
                 session!.startRunning()
             }
+        }
+    }
+    
+    //Function to save mock data into the core data
+    /*
+     save:
+        This function is used to save mock data into the core data for the history viewController.
+     Parameters:
+        name:
+            A string parameter which is a name of the object to be stored in the history.
+     Returns:
+        None
+     */
+    func save(name: String) {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "HistoryObject", in: managedContext)!
+        
+        let historyObject = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        historyObject.setValue(name, forKey: "name")
+        
+        do {
+            try managedContext.save()
+            appDelegate.historyObjects.append(historyObject)
+        } catch let error as NSError {
+            print("Could not save object. \(error), \(error.userInfo)")
         }
     }
     
