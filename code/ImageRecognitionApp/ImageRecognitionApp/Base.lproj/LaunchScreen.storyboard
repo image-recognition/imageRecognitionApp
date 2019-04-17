@@ -18,18 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Object Recognition App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYj-7U-LRj" userLabel="App Name">
-                                <rect key="frame" x="88.666666666666686" y="438" width="237" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Object Recognition App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHS-LD-Ufq">
+                                <rect key="frame" x="73" y="433" width="268" height="30"/>
+                                <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.50196078431372548" green="0.60392156862745094" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="MYj-7U-LRj" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Djp-dt-5dE"/>
-                            <constraint firstItem="MYj-7U-LRj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="394" id="jSA-ba-ghX"/>
-                            <constraint firstItem="MYj-7U-LRj" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ujE-1B-aR9"/>
+                            <constraint firstItem="lHS-LD-Ufq" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="GA2-zG-fyH"/>
+                            <constraint firstItem="lHS-LD-Ufq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Nsf-e7-f5Q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

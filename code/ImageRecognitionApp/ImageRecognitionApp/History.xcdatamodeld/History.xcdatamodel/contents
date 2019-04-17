@@ -3,7 +3,11 @@
     <entity name="HistoryObject" representedClassName="HistoryObject" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="ListObject" representedClassName="ListObject" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="HistoryObject" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="ListObject" positionX="-63" positionY="-9" width="128" height="60"/>
     </elements>
 </model>
