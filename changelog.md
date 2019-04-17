@@ -53,8 +53,17 @@
 - Feedback: I feel your project is falling a bit behind, and you're not putting in enough time to pass. Show me 10-14 hours each per week.. where was it spent? I'd like you to start writing the time taken per changelog item, so that you can see where time is being spent / not being spent enough. [Henry]
 
 # Week 7, Tuesday 16 April
+### Total Hours: 7.5 Hours
 - Understand the basic functioning of core data persistance and set up the basic data model for the history class. [Shubham Jindal, Jindalsh, 218053165] (6 hours)
 - Update constraints to support more screen sizes. [Shubham Jindal, Jindalsh, 218053165] (1.5 hours)
 
 # Week 7, Wednesday 17 April
+### Total Hours: 7 Hours
 - Import core data, complete the implementation for core data persistence to save the data of the history viewcontroller. [Shubham Jindal, Jindalsh, 218053165] (7 hours)
+
+# Week 7, Wednesday 17 April
+### Total Hours: 6 Hours
+- Understand the basic functionality of core data. [Sohil Kaushal, SohilDeakin, 218053209] (4 hours)
+- Initialised the core data component for the ListViewController class. This has been put into the same file as the previous data model i.e. **History.xcdatamodeld** [Sohil Kaushal, SohilDeakin, 218053209] (.5 hour)
+- Fixed a few problems with color scheme. [Sohil Kaushal, SohilDeakin, 218053209] (.75 hour)
+- Fixed the error in which Splash screen was not showing up in certain devices. [Sohil Kaushal, SohilDeakin, 218053209] (.75 hour)
