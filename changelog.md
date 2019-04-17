@@ -55,3 +55,6 @@
 # Week 7, Tuesday 16 April
 - Understand the basic functioning of core data persistance and set up the basic data model for the history class. [Shubham Jindal, Jindalsh, 218053165] (6 hours)
 - Update constraints to support more screen sizes. [Shubham Jindal, Jindalsh, 218053165] (1.5 hours)
+
+# Week 7, Wednesday 17 April
+- Import core data, complete the implementation for core data persistence to save the data of the history viewcontroller. [Shubham Jindal, Jindalsh, 218053165] (7 hours)
