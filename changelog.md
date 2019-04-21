@@ -67,3 +67,9 @@
 - Initialised the core data component for the ListViewController class. This has been put into the same file as the previous data model i.e. **History.xcdatamodeld** [Sohil Kaushal, SohilDeakin, 218053209] (.5 hour)
 - Fixed a few problems with color scheme. [Sohil Kaushal, SohilDeakin, 218053209] (.75 hour)
 - Fixed the error in which Splash screen was not showing up in certain devices. [Sohil Kaushal, SohilDeakin, 218053209] (.75 hour)
+# Week 7, Wednesday 17 April
+### Total Hours: 6
+*Please note these changes were made on the MachineLearning brach you can see these changes by using the following command*
+`git checkout branch_name`
+- Understand the basics of data slicing in python [Sohil Kaushal, SohilDeakin, 218053209] (3 hours)
+- Implementation of a test.py file in the MachineLearning branch to get a basic implementation of these aspects. [Sohil Kaushal, SohilDeakin, 218053209] (3 hours)
