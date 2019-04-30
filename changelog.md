@@ -73,3 +73,12 @@
 `git checkout branch_name`
 - Understand the basics of data slicing in python [Sohil Kaushal, SohilDeakin, 218053209] (3 hours)
 - Implementation of a test.py file in the MachineLearning branch to get a basic implementation of these aspects. [Sohil Kaushal, SohilDeakin, 218053209] (3 hours)
+
+# Week 8, Tuesday 30 April
+### Total Hours: 5
+*Please note these changes were made on the MachineLearning brach you can see these changes by using the following command*
+`git checkout branch_name`
+- Understand the working of CreateMLUI(a library by Apple) to succesfully build an image classifier for the given dataset. [Sohil Kaushal, SohilDeakin, 218053209] (2 hours)
+- Find a reasonable dataset that could be used to implement the task. Included in the licenses.txt file. [Sohil Kaushal, SohilDeakin, 218053209] (1 hours)
+- Prepare the dataset and train the image classifier. [Sohil Kaushal, SohilDeakin, 218053209] (1 hours)
+- Test the data using random images from internet. [Sohil Kaushal, SohilDeakin, 218053209] (1 hours)
