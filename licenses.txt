@@ -1,0 +1,6 @@
+Images Sources:
+1. Griffin, G. Holub, AD. Perona, P. The Caltech 256. Caltech Technical Report
+
+
+Tutorials Consulted:
+1. https://developer.apple.com/videos/play/wwdc2018/703/
