@@ -87,7 +87,7 @@
 ### Total Hours: 2
 - Understand the working of CreateMLUI(a library by Apple) to succesfully build an image classifier for the given dataset. [Shubham Jindal, Jindalsh, 218053165] (2 hours)
 
-# Week 8, Wednesday
+# Week 8, Wednesday 1 May
 ### Total Hours: 2
 - Complete the core data implementation for the list table viewController. [Shubham Jindal, Jindalsh, 218053165] (1 hour)
 - Modify the previous implemented core data functions to support the new implementation for the list table viewController. [Shubham Jindal, Jindalsh, 218053165] (1 hour)
