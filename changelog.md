@@ -82,3 +82,12 @@
 - Find a reasonable dataset that could be used to implement the task. Included in the licenses.txt file. [Sohil Kaushal, SohilDeakin, 218053209] (1 hours)
 - Prepare the dataset and train the image classifier. [Sohil Kaushal, SohilDeakin, 218053209] (1 hours)
 - Test the data using random images from internet. [Sohil Kaushal, SohilDeakin, 218053209] (1 hours)
+
+# Week 8, Tuesday 30 April
+### Total Hours: 2
+- Understand the working of CreateMLUI(a library by Apple) to succesfully build an image classifier for the given dataset. [Shubham Jindal, Jindalsh, 218053165] (2 hours)
+
+# Week 8, Wednesday
+### Total Hours: 2
+- Complete the core data implementation for the list table viewController. [Shubham Jindal, Jindalsh, 218053165] (1 hour)
+- Modify the previous implemented core data functions to support the new implementation for the list table viewController. [Shubham Jindal, Jindalsh, 218053165] (1 hour)
