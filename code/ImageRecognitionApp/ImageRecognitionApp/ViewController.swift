@@ -34,13 +34,17 @@ class ViewController: UIViewController {
         //Preloading the table cells for testing
 //        appDelegate.identifiedObjects.append("Orange")
 //        appDelegate.identifiedObjects.append("Apple")
-        appDelegate.savedObjects.append("Orange")
-        appDelegate.savedObjects.append("MacBook Air")
+//        appDelegate.savedObjects.append("Orange")
+//        appDelegate.savedObjects.append("MacBook Air")
         
         //Test cases for core data
-//        self.save(name: "Orange")
-//        self.save(name: "Apple")
-//        self.save(name: "MacBook Air")
+//        self.save(object: "HistoryObject", name: "Orange")
+//        self.save(object: "HistoryObject", name: "Apple")
+//        self.save(object: "HistoryObject", name: "MacBook Air")
+        
+        self.save(object: "ListObject", name: "Bananas")
+        self.save(object: "ListObject", name: "Apple")
+        self.save(object: "ListObject", name: "Rice")
         
         //Activating the camera view
         session = AVCaptureSession()
@@ -79,10 +83,10 @@ class ViewController: UIViewController {
      Returns:
         None
      */
-    func save(name: String) {
+    func save(object: String, name: String) {
         let managedContext = appDelegate.persistentContainer.viewContext
         
-        let entity = NSEntityDescription.entity(forEntityName: "HistoryObject", in: managedContext)!
+        let entity = NSEntityDescription.entity(forEntityName: object, in: managedContext)!
         
         let historyObject = NSManagedObject(entity: entity, insertInto: managedContext)
         

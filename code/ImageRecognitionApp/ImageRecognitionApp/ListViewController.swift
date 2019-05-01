@@ -12,6 +12,10 @@ import CoreData
 
 class ListViewController: UITableViewController {
     var savedObjects: [String]!
+    
+    var listObjects: [NSManagedObject]!
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     /*
      viewWillAppear:
          This is an in-built function. It is called before the view controller's view is about to a views hierarchy
@@ -23,8 +27,19 @@ class ListViewController: UITableViewController {
         This function does not return any value.
      */
     override func viewWillAppear(_ animated: Bool) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        savedObjects = appDelegate.savedObjects
+        
+        //savedObjects = appDelegate.savedObjects
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ListObject")
+        
+        do {
+            appDelegate.listObjects = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        listObjects = appDelegate.listObjects
         
         self.tableView.reloadData()
     }
@@ -68,7 +83,8 @@ class ListViewController: UITableViewController {
         The number of rows in section.
      */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return savedObjects.count
+        //return savedObjects.count
+        return listObjects.count
     }
     
     /*
@@ -85,7 +101,10 @@ class ListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Configure the cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableCell", for: indexPath)
-        cell.textLabel?.text = savedObjects[indexPath.row]
+//        cell.textLabel?.text = savedObjects[indexPath.row]
+        
+        let object = listObjects[indexPath.row]
+        cell.textLabel?.text = object.value(forKey: "name") as? String
         return cell
     }
 }
