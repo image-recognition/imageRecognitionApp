@@ -69,14 +69,14 @@
 - Fixed the error in which Splash screen was not showing up in certain devices. [Sohil Kaushal, SohilDeakin, 218053209] (.75 hour)
 # Week 7, Wednesday 17 April
 ### Total Hours: 6
-*Please note these changes were made on the MachineLearning brach you can see these changes by using the following command*
+*Please note these changes were made on the MachineLearning branch you can see these changes by using the following command*
 `git checkout branch_name`
 - Understand the basics of data slicing in python [Sohil Kaushal, SohilDeakin, 218053209] (3 hours)
 - Implementation of a test.py file in the MachineLearning branch to get a basic implementation of these aspects. [Sohil Kaushal, SohilDeakin, 218053209] (3 hours)
 
 # Week 8, Tuesday 30 April
 ### Total Hours: 5
-*Please note these changes were made on the MachineLearning brach you can see these changes by using the following command*
+*Please note these changes were made on the MachineLearning branch you can see these changes by using the following command*
 `git checkout branch_name`
 - Understand the working of CreateMLUI(a library by Apple) to succesfully build an image classifier for the given dataset. [Sohil Kaushal, SohilDeakin, 218053209] (2 hours)
 - Find a reasonable dataset that could be used to implement the task. Included in the licenses.txt file. [Sohil Kaushal, SohilDeakin, 218053209] (1 hours)
@@ -96,3 +96,10 @@
 ### Total Hours: 2.5
 - Add the functionality to capture the image from the custom camera view which will be then used to recognise the object. [Shubham Jindal, Jindalsh, 218053165] (1.75 hours)
 - Add the image view in order to display the captured image and update the constraints to support the camera view as well as the image view. [Shubham Jindal, Jindalsh, 218053165] (0.75 hours)
+
+# Week 8, Thursday 2 May
+### Total Hours: 3
+- Research the capabilities of Vision module by Apple to take care of all the heavy lifting [Sohil Kaushal, SohilDeakin, 218053209] (1 hour)
+- Started the implementation of Vision into the project. This will be integrated with the custom model in the near future. [Sohil Kaushal, SohilDeakin, 218053209] (1 hour)
+- Debugging the project(*Still in progress*).[Sohil Kaushal, SohilDeakin, 218053209] (1 hour).
+- Fixed typos in the changelog.md file. [Sohil Kaushal, SohilDeakin, 218053209]
