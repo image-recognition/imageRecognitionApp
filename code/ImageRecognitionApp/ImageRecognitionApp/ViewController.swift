@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 
     
     var session: AVCaptureSession!
@@ -42,9 +42,9 @@ class ViewController: UIViewController {
 //        self.save(object: "HistoryObject", name: "Apple")
 //        self.save(object: "HistoryObject", name: "MacBook Air")
         
-        self.save(object: "ListObject", name: "Bananas")
-        self.save(object: "ListObject", name: "Apple")
-        self.save(object: "ListObject", name: "Rice")
+//        self.save(object: "ListObject", name: "Bananas")
+//        self.save(object: "ListObject", name: "Apple")
+//        self.save(object: "ListObject", name: "Rice")
         
         //Activating the camera view
         session = AVCaptureSession()
@@ -73,7 +73,6 @@ class ViewController: UIViewController {
         }
     }
     
-    //Function to save mock data into the core data
     /*
      save:
         This function is used to save mock data into the core data for the history viewController.
@@ -100,8 +99,31 @@ class ViewController: UIViewController {
         }
     }
     
+    /*
+     photoOutput:
+        This is an internal function. Provides the delegate with the captured image and associated metadata resulting from a photo capture.
+     Parameters:
+        captureOutput:
+            The photo output performing the capture.
+        photo:
+            An object containing the captured image pixel buffer, along with any metadata and attachments captured along with the photo (such as a preview image or depth map).
+        error:
+            If the capture process could not proceed successfully, an error object describing the failure; otherwise, nil.
+     Returns:
+        None
+     */
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard let dataOfImage = photo.fileDataRepresentation()
+            else { return }
+        let image = UIImage(data: dataOfImage)
+        capturedImageView.image = image
+    }
+    
     //Variable for the camera view
     @IBOutlet weak var cameraView: UIView!
+    
+    //Variable for the still image view
+    @IBOutlet weak var capturedImageView: UIImageView!
     
     /*
      takePicture:
@@ -113,7 +135,8 @@ class ViewController: UIViewController {
         None
      */
     @IBAction func takePicture(_ sender: Any) {
-        
+        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        stillImageOutput.capturePhoto(with: settings, delegate: self)
     }
     /*
      viewDidAppear:
@@ -129,5 +152,19 @@ class ViewController: UIViewController {
         
         //Setting the video layer frame to the camera view boundaries
         videoPreviewLayer?.frame = cameraView!.bounds
+    }
+    
+    /*
+     viewWillDisappear:
+        This is an internal function. Notifies the view controller that its view is about to be removed from a view hierarchy.
+     Parameters:
+        animated:
+            If true, the disappearance of the view is being animated.
+     Returns:
+        This function does not return any value
+     */
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.session.stopRunning()
     }
 }
