@@ -91,3 +91,8 @@
 ### Total Hours: 2
 - Complete the core data implementation for the list table viewController. [Shubham Jindal, Jindalsh, 218053165] (1 hour)
 - Modify the previous implemented core data functions to support the new implementation for the list table viewController. [Shubham Jindal, Jindalsh, 218053165] (1 hour)
+
+# Week 8, Thursday 2 May
+### Total Hours: 2.5
+- Add the functionality to capture the image from the custom camera view which will be then used to recognise the object. [Shubham Jindal, Jindalsh, 218053165] (1.75 hours)
+- Add the image view in order to display the captured image and update the constraints to support the camera view as well as the image view. [Shubham Jindal, Jindalsh, 218053165] (0.75 hours)
