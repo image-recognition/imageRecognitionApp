@@ -107,3 +107,10 @@
 # Week 8, Friday 3 May 
 ### Total Hours:
 - Updated the licenses.txt file  
+
+# Week 8, Friday 3 May
+### Total Hours: 4.25
+- Add settings view controller and embedded it in the tab view controller. [Shubham Jindal, Jindalsh, 218053165] (0.25 hours)
+- Fixed the camera bug which was stopping the camera when a different view or tab was selected. [Shubham Jindal, Jindalsh, 218053165] (1 hour)
+- Added swipe to delete functionality in the history table view and the list table view. [Shubham Jindal, Jindalsh, 218053165] (2 hours)
+- Modifications to the UI. [Shubham Jindal, Jindalsh, 218053165] (1 hour)
