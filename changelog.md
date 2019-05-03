@@ -103,3 +103,7 @@
 - Started the implementation of Vision into the project. This will be integrated with the custom model in the near future. [Sohil Kaushal, SohilDeakin, 218053209] (1 hour)
 - Debugging the project(*Still in progress*).[Sohil Kaushal, SohilDeakin, 218053209] (1 hour).
 - Fixed typos in the changelog.md file. [Sohil Kaushal, SohilDeakin, 218053209]
+
+# Week 8, Friday 3 May 
+### Total Hours:
+- Updated the licenses.txt file  
