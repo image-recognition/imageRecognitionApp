@@ -41,36 +41,10 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 //        self.save(object: "HistoryObject", name: "Orange")
 //        self.save(object: "HistoryObject", name: "Apple")
 //        self.save(object: "HistoryObject", name: "MacBook Air")
-        
+//
 //        self.save(object: "ListObject", name: "Bananas")
 //        self.save(object: "ListObject", name: "Apple")
 //        self.save(object: "ListObject", name: "Rice")
-        
-        //Activating the camera view
-        session = AVCaptureSession()
-        session.sessionPreset = .medium
-        let backCamera =  AVCaptureDevice.default(for: AVMediaType.video)
-        var error: NSError?
-        var input: AVCaptureDeviceInput!
-        do {
-            input = try AVCaptureDeviceInput(device: backCamera!)
-        } catch let error1 as NSError {
-            error = error1
-            input = nil
-            print(error!.localizedDescription)
-        }
-        if error == nil && session!.canAddInput(input) {
-            session!.addInput(input)
-            stillImageOutput = AVCapturePhotoOutput()
-            if session!.canAddOutput(stillImageOutput!) {
-                session!.addOutput(stillImageOutput!)
-                videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
-                videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspect
-                videoPreviewLayer.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
-                cameraView.layer.addSublayer(videoPreviewLayer)
-                session!.startRunning()
-            }
-        }
     }
     
     /*
@@ -138,6 +112,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
         stillImageOutput.capturePhoto(with: settings, delegate: self)
     }
+    
     /*
      viewDidAppear:
         This is an internal function. Notifies the view controller that its view was added to a view hierarchy.
@@ -150,8 +125,39 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        //Activating the camera view
+        session = AVCaptureSession()
+        session.sessionPreset = .medium
+        let backCamera =  AVCaptureDevice.default(for: AVMediaType.video)
+        var error: NSError?
+        var input: AVCaptureDeviceInput!
+        do {
+            input = try AVCaptureDeviceInput(device: backCamera!)
+        } catch let error1 as NSError {
+            error = error1
+            input = nil
+            print(error!.localizedDescription)
+        }
+        if error == nil && session!.canAddInput(input) {
+            session!.addInput(input)
+            stillImageOutput = AVCapturePhotoOutput()
+            if session!.canAddOutput(stillImageOutput!) {
+                session!.addOutput(stillImageOutput!)
+                videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
+                videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+                videoPreviewLayer.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
+                cameraView.layer.addSublayer(videoPreviewLayer)
+                
+                DispatchQueue.global(qos: .userInitiated).async {
+                    self.session!.startRunning()
+                }
+            }
+        }
+        
         //Setting the video layer frame to the camera view boundaries
-        videoPreviewLayer?.frame = cameraView!.bounds
+        DispatchQueue.main.async {
+            self.videoPreviewLayer?.frame = self.cameraView!.bounds
+        }
     }
     
     /*

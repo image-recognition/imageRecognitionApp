@@ -16,6 +16,7 @@ class ListViewController: UITableViewController {
     var listObjects: [NSManagedObject]!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     /*
      viewWillAppear:
          This is an in-built function. It is called before the view controller's view is about to a views hierarchy
@@ -43,6 +44,7 @@ class ListViewController: UITableViewController {
         
         self.tableView.reloadData()
     }
+    
     /*
      viewDidLoad:
         This function contains the code for the events that will occur after the view had been loaded.
@@ -54,6 +56,7 @@ class ListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     /*
      didRecieveMemoryWarning:
          This is an in-built method and it is never directly called by the application.
@@ -71,7 +74,7 @@ class ListViewController: UITableViewController {
     
     // MARK: - Table view data source
     /*
-     tableView:
+     tableView(_:numberOfRowsInSection:):
          This is an in-built function. This function tells the data source to return the number of rows
          in a given section table view.
      Parameters:
@@ -88,7 +91,7 @@ class ListViewController: UITableViewController {
     }
     
     /*
-     tableView:
+     tableView(_:cellForRowAt:):
         Asks the data source for a cell to insert in a particular location of the table view.
      Parameters:
         tableView:
@@ -106,5 +109,51 @@ class ListViewController: UITableViewController {
         let object = listObjects[indexPath.row]
         cell.textLabel?.text = object.value(forKey: "name") as? String
         return cell
+    }
+    
+    /*
+     showAlert:
+        Used to display errors as alerts.
+     Parameters:
+        error:
+            Error message to be displayed.
+     Returns:
+        None
+     */
+    func showAlert(_ error: String) {
+        let alert = UIAlertController(title: "Error!", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    /*
+     tableView(_:commit:forRowAt:)
+        Asks the data source to commit the insertion or deletion of a specified row in the receiver.
+     Parameters:
+        tableView:
+            The table-view object requesting the insertion or deletion.
+        editingStyle:
+            The cell editing style corresponding to a insertion or deletion requested for the row specified by indexPath.
+        indexPath:
+            An index path locating the row in tableView.
+     Returns:
+        None
+     */
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        if(editingStyle==UITableViewCellEditingStyle.delete) {
+            
+            managedContext.delete(appDelegate.listObjects[indexPath.row])
+            self.listObjects.remove(at: indexPath.row)
+            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            do {
+                try managedContext.save()
+            } catch let error as NSError {
+                showAlert("Could not save. \(error), \(error.userInfo)")
+            }
+        }
     }
 }

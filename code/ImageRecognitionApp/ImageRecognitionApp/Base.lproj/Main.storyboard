@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="plb-LY-WBd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P2I-Pd-bkI">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -81,16 +81,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="604" y="-169.95073891625617"/>
+            <point key="canvasLocation" x="1546.4000000000001" y="-169.95073891625617"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="MVd-zc-bL4">
             <objects>
                 <tableViewController id="v2T-bF-7Ha" customClass="HistoryViewController" customModule="ImageRecognitionApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RQK-Ip-HR5">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RQK-Ip-HR5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.50196078430000002" green="0.60392156860000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableCell" id="Qud-H9-wJD">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -100,6 +101,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" red="0.50196078430000002" green="0.60392156860000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.50196078430000002" green="0.60392156860000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -111,16 +113,33 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tn-cv-zLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="604" y="522.18890554722645"/>
+            <point key="canvasLocation" x="1546.4000000000001" y="521.67487684729065"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="FgU-JS-NTj">
+            <objects>
+                <viewController id="ESc-3B-PPU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DoV-sU-c7J">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.50196078431372548" green="0.60392156862745094" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="2UH-WL-E6y"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="zR5-wx-aVd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j7y-o5-wEP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1546.4000000000001" y="1918.9655172413793"/>
         </scene>
         <!--List-->
         <scene sceneID="6Hi-h3-aJZ">
             <objects>
                 <tableViewController id="Q3i-gr-zgG" customClass="ListViewController" customModule="ImageRecognitionApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1ki-dx-wgZ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1ki-dx-wgZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.50196078430000002" green="0.60392156860000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListTableCell" id="79w-pA-yu7">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -141,27 +160,27 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4jn-fG-dhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="604" y="1226.5367316341831"/>
+            <point key="canvasLocation" x="1546.4000000000001" y="1225.8620689655172"/>
         </scene>
         <!--Tab Bar Controller-->
-        <scene sceneID="R5m-u2-blA">
+        <scene sceneID="dSa-AH-yvR">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="plb-LY-WBd" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="P2I-Pd-bkI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b2j-x0-6oc">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OSZ-Ik-4Ca">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="iL8-zm-xL6"/>
-                        <segue destination="v2T-bF-7Ha" kind="relationship" relationship="viewControllers" id="3gl-y5-8YU"/>
-                        <segue destination="Q3i-gr-zgG" kind="relationship" relationship="viewControllers" id="FsM-Nu-Cv3"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="ggX-0A-hwc"/>
+                        <segue destination="v2T-bF-7Ha" kind="relationship" relationship="viewControllers" id="y8F-Bl-3UB"/>
+                        <segue destination="Q3i-gr-zgG" kind="relationship" relationship="viewControllers" id="Au0-cc-7oQ"/>
+                        <segue destination="ESc-3B-PPU" kind="relationship" relationship="viewControllers" id="lQy-6I-y7Y"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MGE-5f-QUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tyJ-kO-8NM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-738" y="265"/>
+            <point key="canvasLocation" x="604" y="874.13793103448279"/>
         </scene>
     </scenes>
     <resources>
