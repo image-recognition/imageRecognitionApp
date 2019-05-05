@@ -110,6 +110,35 @@ class ListViewController: UITableViewController {
         cell.textLabel?.text = object.value(forKey: "name") as? String
         return cell
     }
+    @IBAction func AddItem(_ sender: Any) {
+        let alert = UIAlertController(title: "New Item",
+                                      message: "Add a new item",
+                                      preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+            
+            guard let textField = alert.textFields?.first,
+                let nameToSave = textField.text else {
+                    return
+            }
+            
+            ViewController().save(object: "ListObject", name: nameToSave)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .default)
+        
+        alert.addTextField()
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
     
     /*
      showAlert:
