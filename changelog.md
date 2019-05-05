@@ -114,3 +114,8 @@
 - Fixed the camera bug which was stopping the camera when a different view or tab was selected. [Shubham Jindal, Jindalsh, 218053165] (1 hour)
 - Added swipe to delete functionality in the history table view and the list table view. [Shubham Jindal, Jindalsh, 218053165] (2 hours)
 - Modifications to the UI. [Shubham Jindal, Jindalsh, 218053165] (1 hour)
+
+# Week 8, Sunday 5 May
+### total hours: 2.5
+- Update the UI and embed the table view controllers in Navigation view controllers in a way that buttons can be added in the table view controllers. [Shubham Jindal, Jindalsh, 218053165] (1 hour)
+- Add the functionality in list table view controller which allows the user to add an item to the list explicitly. [Shubham Jindal, Jindalsh, 218053165] (1.5 hours)
