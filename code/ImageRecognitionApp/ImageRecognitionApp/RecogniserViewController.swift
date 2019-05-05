@@ -48,8 +48,7 @@ class RecogniserViewController : UIViewController {
         
     }
     // TODO
-    func setupPrediction() {
-        
+    func setupPrediction(prediction: String) {
     }
 }
 
