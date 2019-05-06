@@ -129,3 +129,8 @@
 - Training the model. [Sohil Kaushal, SohilDeakin, 218053209] (2 Hours).
 - Fixed Changelog. [Sohil Kaushal, SohilDeakin, 218053209] 
 `Please note this much time was taken to train the model as I ended up training it on my local machine which didn't have enough compute power resulting in a longer training period. From now on we'll do the training process on a remote AWS Compute Instance`.
+
+# Week 9, Monday 6 May
+### total hours: 5
+- Testing and fixing some bugs in the list view controller. [Shubham Jindal, Jindalsh, 218053165] (2 hours)
+- Collecting the dataset that is being used to enhance the capabilities of the machine learning model but since this dataset is quite large it would end up slowing down the entire repository and making everything unusable. Thus this dataset will not be uploaded onto the GitHub repository. [Shubham Jindal, Jindalsh, 218053165] (3 hours)
