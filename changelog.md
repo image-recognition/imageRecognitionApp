@@ -104,9 +104,9 @@
 - Debugging the project(*Still in progress*).[Sohil Kaushal, SohilDeakin, 218053209] (1 hour).
 - Fixed typos in the changelog.md file. [Sohil Kaushal, SohilDeakin, 218053209]
 
-# Week 8, Friday 3 May 
+# Week 8, Friday 3 May
 ### Total Hours:
-- Updated the licenses.txt file  
+- Updated the licenses.txt file. [Sohil Kaushal, SohilDeakin, 218053209]
 
 # Week 8, Friday 3 May
 ### Total Hours: 4.25
@@ -116,6 +116,16 @@
 - Modifications to the UI. [Shubham Jindal, Jindalsh, 218053165] (1 hour)
 
 # Week 8, Sunday 5 May
-### total hours: 2.5
+### Total hours: 2.5
 - Update the UI and embed the table view controllers in Navigation view controllers in a way that buttons can be added in the table view controllers. [Shubham Jindal, Jindalsh, 218053165] (1 hour)
 - Add the functionality in list table view controller which allows the user to add an item to the list explicitly. [Shubham Jindal, Jindalsh, 218053165] (1.5 hours)
+
+# Week 8, Sunday 5 May
+### Total hours: 7
+*Please note these changes were made on the MachineLearning branch you can see these changes by using the following command*
+`git checkout branch_name`
+- Writing the initial implementation of the final machine learning model. [Sohil Kaushal, SohilDeakin, 218053209] (3 Hours)
+- Tweaking the model and trying different algorithms to maximise efficiency of the model. [Sohil Kaushal, SohilDeakin, 218053209] (2 Hours)  
+- Training the model. [Sohil Kaushal, SohilDeakin, 218053209] (2 Hours).
+
+`Please note this much time was taken to train the model as I ended up training it on my local machine which didn't have enough compute power resulting in a longer training period. From now on we'll do the training process on a remote AWS Compute Instance`.
