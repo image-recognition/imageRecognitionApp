@@ -121,11 +121,11 @@ class ListViewController: UITableViewController {
                 let nameToSave = textField.text else {
                     return
             }
-            
-            ViewController().save(object: "ListObject", name: nameToSave)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            if textField.text?.isEmpty ?? true {
+                return
             }
+            ViewController().save(object: "ListObject", name: nameToSave)
+                self.tableView.reloadData()
             
         }
         
