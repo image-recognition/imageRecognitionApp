@@ -127,5 +127,5 @@
 - Writing the initial implementation of the final machine learning model. [Sohil Kaushal, SohilDeakin, 218053209] (3 Hours)
 - Tweaking the model and trying different algorithms to maximise efficiency of the model. [Sohil Kaushal, SohilDeakin, 218053209] (2 Hours)  
 - Training the model. [Sohil Kaushal, SohilDeakin, 218053209] (2 Hours).
-
+- Fixed Changelog. [Sohil Kaushal, SohilDeakin, 218053209] 
 `Please note this much time was taken to train the model as I ended up training it on my local machine which didn't have enough compute power resulting in a longer training period. From now on we'll do the training process on a remote AWS Compute Instance`.
