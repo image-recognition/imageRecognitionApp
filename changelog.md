@@ -138,3 +138,8 @@
 # Week 9, Tuesday 7 May
 ### Total Hours: 2
 - Testing and trying to fix a bug which prevents the list table view controller to refresh after the user explicitly adds an item to the list. [Shubham Jindal, Jindalsh, 218053165] (2 hours)
+
+# Week 9, Tudesday 7 
+### Total Hours: 3
+- Testing and trying to fix a bug which prevents the list table view controller to refresh after the user explicitly adds an item to the list. [Sohil Kaushal, SohilDeakin, 218053209] (1 Hour)
+- Additional optimisation and training for the Model. [Sohil Kaushal, SohilDeakin, 218053209] (2 Hour)
