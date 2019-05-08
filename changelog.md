@@ -148,4 +148,10 @@
 - Good to see regular progress. Glad to see it's getting closer. Final stretch now. 
 - Make sure you go over everything in the Grading Criteria super carefully, to ensure you meet each point.
 
+#  Week 9, Wednesday 8 May
+### Total Hours: 5
+- Research on different ways to convert a keras based machine learning model to `*.mlmode` which is recommedned by Apple.
+- Writing a script for converting the machine learning model to the `*.mlmode` format. We faced quite a few problems in this part as the highest version of Python that Apple's Library supports is 2.7* which is not ideal as it will be deprecated from 2020.
+[Sohil Kaushal, SohilDeakin, 218053209], [Shubham Jindal, Jindalsh, 218053165]
+(As we were working together on one machine today, we used only one GitHub account to make the commits to the project.)
 
