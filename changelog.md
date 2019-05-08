@@ -143,3 +143,9 @@
 ### Total Hours: 3
 - Testing and trying to fix a bug which prevents the list table view controller to refresh after the user explicitly adds an item to the list. [Sohil Kaushal, SohilDeakin, 218053209] (1 Hour)
 - Additional optimisation and training for the Model. [Sohil Kaushal, SohilDeakin, 218053209] (2 Hour)
+
+## Week 9, Wednesday 8/May [Henry]
+- Good to see regular progress. Glad to see it's getting closer. Final stretch now. 
+- Make sure you go over everything in the Grading Criteria super carefully, to ensure you meet each point.
+
+
