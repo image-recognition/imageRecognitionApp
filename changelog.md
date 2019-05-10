@@ -155,3 +155,6 @@
 [Sohil Kaushal, SohilDeakin, 218053209], [Shubham Jindal, Jindalsh, 218053165]
 - (As we were working together on one machine today, we used only one GitHub account to make the commits to the project.)
 
+# Week 9, Friday 10 May
+### Total Hours: 2
+- Testing and fixing some minor bugs. [Shubham Jindal, Jindalsh, 218053165], [Sohil Kaushal, SohilDeakin, 218053209] (2 hours)
