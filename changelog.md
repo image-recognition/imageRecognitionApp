@@ -162,3 +162,7 @@
 # Week 9, Saturday 11 May
 ### Total Hours: 3
 - Trying to find the bug which stops the table data from reloading in the list table view controller. [Shubham Jindal, Jindalsh, 218053165], [Sohil Kaushal, SohilDeakin, 218053209] (3 hours)
+
+# Week 9, Sunday 12 May
+### Total Hours: 2
+- Training the model for more accuracy. [Shubham Jindal, Jindalsh, 218053165], [Sohil Kaushal, SohilDeakin, 218053209] (2 hours)
