@@ -170,5 +170,5 @@
 # Week 10, Monday 13 May
 ### Total Hours: 7
 - Implemented live camera view functionality which can recognise objects in real time. [Shubham Jindal, Jindalsh, 218053165], [Sohil Kaushal, SohilDeakin, 218053209] (3 hours)
-- Code Optimisations and minor bug fixes. [Shubham Jindal, Jindalsh, 218053165], [Sohil Kaushal, SohilDeakin, 218053209] (1 hours)
+- Code Optimisations and minor bug fixes. [Shubham Jindal, Jindalsh, 218053165], [Sohil Kaushal, SohilDeakin, 218053209] (1 hour)
 - Embedding the model and testing it in the app. [Shubham Jindal, Jindalsh, 218053165], [Sohil Kaushal, SohilDeakin, 218053209] (3 hours) (The model didn't worked correctly in the app so more changes will be performed.)
