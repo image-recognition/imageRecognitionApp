@@ -9,9 +9,9 @@
 import UIKit
 import AVFoundation
 import CoreData
+import Vision
 
-class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
-
+class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     var session: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput!
@@ -99,6 +99,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     //Variable for the still image view
     @IBOutlet weak var capturedImageView: UIImageView!
     
+    @IBOutlet weak var recognisedObject: UILabel!
     /*
      takePicture:
         This function is used to take a picture from the camera view.
@@ -110,7 +111,9 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
      */
     @IBAction func takePicture(_ sender: Any) {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
-        stillImageOutput.capturePhoto(with: settings, delegate: self)
+        stillImageOutput?.capturePhoto(with: settings, delegate: self)
+        
+        self.save(object: "HistoryObject", name: self.recognisedObject.text!)
     }
     
     /*
@@ -128,25 +131,35 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         //Activating the camera view
         session = AVCaptureSession()
         session.sessionPreset = .medium
-        let backCamera =  AVCaptureDevice.default(for: AVMediaType.video)
         var error: NSError?
-        var input: AVCaptureDeviceInput!
+
+        let available = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back).devices
+        
         do {
-            input = try AVCaptureDeviceInput(device: backCamera!)
+            if let captureDevice = available.first {
+                session.addInput(try AVCaptureDeviceInput(device: captureDevice))
+            }
         } catch let error1 as NSError {
             error = error1
-            input = nil
             print(error!.localizedDescription)
         }
-        if error == nil && session!.canAddInput(input) {
-            session!.addInput(input)
+        
+        let captureOutput = AVCaptureVideoDataOutput()
+        
+        if error == nil && session!.canAddOutput(captureOutput) {
+            session!.addOutput(captureOutput)
             stillImageOutput = AVCapturePhotoOutput()
+            
             if session!.canAddOutput(stillImageOutput!) {
                 session!.addOutput(stillImageOutput!)
+                
                 videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
                 videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspect
                 videoPreviewLayer.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
+                
                 cameraView.layer.addSublayer(videoPreviewLayer)
+                
+                captureOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "vidQueue"))
                 
                 DispatchQueue.global(qos: .userInitiated).async {
                     self.session!.startRunning()
@@ -158,6 +171,30 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         DispatchQueue.main.async {
             self.videoPreviewLayer?.frame = self.cameraView!.bounds
         }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        guard let model = try? VNCoreMLModel(for: MobileNet().model) else {  return  }
+        
+        let request = VNCoreMLRequest(model: model) {   (finishedRequest, error) in
+            guard let results = finishedRequest.results as? [VNClassificationObservation] else {  return  }
+            guard let observation = results.first else {  return  }
+            
+            let predictionClass = "\(observation.identifier)"
+            let predictionConfidence = String(format: "%.02f%", observation.confidence * 100)
+            
+            DispatchQueue.main.async(execute: {
+                self.recognisedObject.text = "\(predictionClass) \(predictionConfidence)%"
+            })
+        }
+        
+        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {  return  }
+        
+        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
     }
     
     /*

@@ -153,5 +153,6 @@ class HistoryViewController: UITableViewController {
                 showAlert("Could not save. \(error), \(error.userInfo)")
             }
         }
+        self.tableView.reloadData()
     }
 }

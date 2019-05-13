@@ -77,6 +77,7 @@
                     <connections>
                         <outlet property="cameraView" destination="vc5-9R-llk" id="FHT-m3-HX2"/>
                         <outlet property="capturedImageView" destination="zYX-TY-Hbs" id="wAK-if-qYu"/>
+                        <outlet property="recognisedObject" destination="SLs-lV-Q4W" id="tUB-lL-1wu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
