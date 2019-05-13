@@ -139,7 +139,7 @@
 ### Total Hours: 2
 - Testing and trying to fix a bug which prevents the list table view controller to refresh after the user explicitly adds an item to the list. [Shubham Jindal, Jindalsh, 218053165] (2 hours)
 
-# Week 9, Tudesday 7 
+# Week 9, Tudesday 7 May
 ### Total Hours: 3
 - Testing and trying to fix a bug which prevents the list table view controller to refresh after the user explicitly adds an item to the list. [Sohil Kaushal, SohilDeakin, 218053209] (1 Hour)
 - Additional optimisation and training for the Model. [Sohil Kaushal, SohilDeakin, 218053209] (2 Hour)
@@ -172,3 +172,10 @@
 - Implemented live camera view functionality which can recognise objects in real time. [Shubham Jindal, Jindalsh, 218053165], [Sohil Kaushal, SohilDeakin, 218053209] (3 hours)
 - Code Optimisations and minor bug fixes. [Shubham Jindal, Jindalsh, 218053165], [Sohil Kaushal, SohilDeakin, 218053209] (1 hour)
 - Embedding the model and testing it in the app. [Shubham Jindal, Jindalsh, 218053165], [Sohil Kaushal, SohilDeakin, 218053209] (3 hours) (The model didn't worked correctly in the app so more changes will be performed.)
+
+# Week 10, Tuesday 14 May
+### Total Hours: 4
+*Please note these changes were made on the MachineLearning branch you can see these changes by using the following command*
+`git checkout branch_name`
+ - Implemented the lautomatic dataset classifier that uses Microsoft's Bing API to featch results of specified images from internet and place them under specified folders. [Shubham Jindal, Jindalsh, 218053165], [Sohil Kaushal, SohilDeakin, 218053209] (3 hours)
+ - Tested the code to make sure that it was working and made the requirements.txt file. [Sohil Kaushal, SohilDeakin, 218053209] (1 hours)
