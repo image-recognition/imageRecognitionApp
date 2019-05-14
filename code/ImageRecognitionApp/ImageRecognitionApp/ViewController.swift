@@ -26,25 +26,10 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
      Parameters:
         None
      Returns:
-        None
+        This function does not return any value.
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Preloading the table cells for testing
-//        appDelegate.identifiedObjects.append("Orange")
-//        appDelegate.identifiedObjects.append("Apple")
-//        appDelegate.savedObjects.append("Orange")
-//        appDelegate.savedObjects.append("MacBook Air")
-        
-        //Test cases for core data
-//        self.save(object: "HistoryObject", name: "Orange")
-//        self.save(object: "HistoryObject", name: "Apple")
-//        self.save(object: "HistoryObject", name: "MacBook Air")
-//
-//        self.save(object: "ListObject", name: "Bananas")
-//        self.save(object: "ListObject", name: "Apple")
-//        self.save(object: "ListObject", name: "Rice")
     }
     
     /*
@@ -54,20 +39,25 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         name:
             A string parameter which is a name of the object to be stored in the history.
      Returns:
-        None
+        This function does not return any value.
      */
     func save(object: String, name: String) {
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let entity = NSEntityDescription.entity(forEntityName: object, in: managedContext)!
         
-        let historyObject = NSManagedObject(entity: entity, insertInto: managedContext)
+        let saveObject = NSManagedObject(entity: entity, insertInto: managedContext)
         
-        historyObject.setValue(name, forKey: "name")
+        saveObject.setValue(name, forKey: "name")
         
         do {
             try managedContext.save()
-            appDelegate.historyObjects.append(historyObject)
+            if object == "HistoryObject" {
+                appDelegate.historyObjects.append(saveObject)
+            }
+            else if object == "ListObject" {
+                appDelegate.listObjects.append(saveObject)
+            }
         } catch let error as NSError {
             print("Could not save object. \(error), \(error.userInfo)")
         }
@@ -84,7 +74,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         error:
             If the capture process could not proceed successfully, an error object describing the failure; otherwise, nil.
      Returns:
-        None
+        This function does not return any value.
      */
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard let dataOfImage = photo.fileDataRepresentation()
@@ -100,6 +90,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
     @IBOutlet weak var capturedImageView: UIImageView!
     
     @IBOutlet weak var recognisedObject: UILabel!
+    
     /*
      takePicture:
         This function is used to take a picture from the camera view.
@@ -107,7 +98,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         sender:
             Since this is an IBAction, the function will be called when the button is clicked.
      Returns:
-        None
+        This function does not return any value.
      */
     @IBAction func takePicture(_ sender: Any) {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
@@ -123,7 +114,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         animated:
             If true, the view was added to the window using an animation.
      Returns:
-        This function does not return any value
+        This function does not return any value.
      */
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -154,8 +145,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
                 session!.addOutput(stillImageOutput!)
                 
                 videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
-                videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspect
-                videoPreviewLayer.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
+                videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
                 
                 cameraView.layer.addSublayer(videoPreviewLayer)
                 
@@ -173,10 +163,31 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         }
     }
     
+    /*
+     didReceiveMemoryWarning:
+        This is an internal function. Sent to the view controller when the app receives a memory warning.
+     Parameters:
+        None
+     Returns:
+        This function does not return any value.
+     */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    /*
+     captureOutput(_:didOutput:from:):
+        This is an internal function. Notifies the delegate that a new video frame was written.
+     Parameters:
+        captureOutput:
+            The capture output object.
+        sampleBuffer:
+            A CMSampleBuffer object containing the video frame data and additional information about the frame, such as its format and presentation time.
+        connection:
+            The connection from which the video was received.
+     Returns:
+        This function does not return any value.
+     */
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let model = try? VNCoreMLModel(for: MobileNet().model) else {  return  }
         
@@ -204,7 +215,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         animated:
             If true, the disappearance of the view is being animated.
      Returns:
-        This function does not return any value
+        This function does not return any value.
      */
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

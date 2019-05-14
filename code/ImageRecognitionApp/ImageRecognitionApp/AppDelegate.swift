@@ -13,9 +13,6 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-    var identifiedObjects = [String]()
-    var savedObjects = [String]()
     
     var historyObjects: [NSManagedObject] = []
     var listObjects: [NSManagedObject] = []

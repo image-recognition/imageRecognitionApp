@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vc5-9R-llk">
-                                <rect key="frame" x="28" y="102" width="319" height="295"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="370"/>
                                 <color key="backgroundColor" red="0.50196078431372548" green="0.60392156862745094" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k78-3b-83g">
-                                <rect key="frame" x="161.66666666666666" y="653" width="52" height="34"/>
+                                <rect key="frame" x="155" y="653" width="65" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Check">
+                                <state key="normal" title="Capture">
                                     <color key="titleColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -57,13 +57,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.50196078430000002" green="0.60392156860000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="vc5-9R-llk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="6eb-zv-Qdc"/>
+                            <constraint firstItem="vc5-9R-llk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6eb-zv-Qdc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="k78-3b-83g" secondAttribute="bottom" constant="42" id="EQw-qv-8wo"/>
                             <constraint firstItem="Tue-mL-khN" firstAttribute="top" secondItem="SLs-lV-Q4W" secondAttribute="bottom" constant="20" id="Qmp-N0-HAf"/>
                             <constraint firstItem="Tue-mL-khN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="WR0-zh-HuP"/>
-                            <constraint firstItem="vc5-9R-llk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="58" id="WwL-UW-m7o"/>
+                            <constraint firstItem="vc5-9R-llk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WwL-UW-m7o"/>
                             <constraint firstItem="k78-3b-83g" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="XVr-u0-ejo"/>
-                            <constraint firstItem="SLs-lV-Q4W" firstAttribute="top" secondItem="vc5-9R-llk" secondAttribute="bottom" constant="25" id="Yqo-qd-8CL"/>
+                            <constraint firstItem="SLs-lV-Q4W" firstAttribute="top" secondItem="vc5-9R-llk" secondAttribute="bottom" constant="8" id="Yqo-qd-8CL"/>
                             <constraint firstItem="k78-3b-83g" firstAttribute="top" secondItem="Tue-mL-khN" secondAttribute="bottom" constant="8" id="cuP-Zt-NIz"/>
                             <constraint firstItem="Tue-mL-khN" firstAttribute="centerX" secondItem="vc5-9R-llk" secondAttribute="centerX" id="je3-jX-KGl"/>
                             <constraint firstItem="Tue-mL-khN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="466" id="lxF-rE-2js"/>
