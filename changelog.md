@@ -127,7 +127,7 @@
 - Writing the initial implementation of the final machine learning model. [Sohil Kaushal, SohilDeakin, 218053209] (3 Hours)
 - Tweaking the model and trying different algorithms to maximise efficiency of the model. [Sohil Kaushal, SohilDeakin, 218053209] (2 Hours)  
 - Training the model. [Sohil Kaushal, SohilDeakin, 218053209] (2 Hours).
-- Fixed Changelog. [Sohil Kaushal, SohilDeakin, 218053209] 
+- Fixed Changelog. [Sohil Kaushal, SohilDeakin, 218053209]
 `Please note this much time was taken to train the model as I ended up training it on my local machine which didn't have enough compute power resulting in a longer training period. From now on we'll do the training process on a remote AWS Compute Instance`.
 
 # Week 9, Monday 6 May
@@ -145,7 +145,7 @@
 - Additional optimisation and training for the Model. [Sohil Kaushal, SohilDeakin, 218053209] (2 Hour)
 
 ## Week 9, Wednesday 8/May [Henry]
-- Good to see regular progress. Glad to see it's getting closer. Final stretch now. 
+- Good to see regular progress. Glad to see it's getting closer. Final stretch now.
 - Make sure you go over everything in the Grading Criteria super carefully, to ensure you meet each point.
 
 #  Week 9, Wednesday 8 May
@@ -174,11 +174,14 @@
 - Embedding the model and testing it in the app. [Shubham Jindal, Jindalsh, 218053165], [Sohil Kaushal, SohilDeakin, 218053209] (3 hours) (The model didn't worked correctly in the app so more changes will be performed.)
 
 # Week 10, Tuesday 14 May
-### Total Hours: 4
+### Total Hours: 9
 *Please note these changes were made on the MachineLearning branch you can see these changes by using the following command*
 `git checkout branch_name`
- - Implemented the lautomatic dataset classifier that uses Microsoft's Bing API to featch results of specified images from internet and place them under specified folders. [Sohil Kaushal, SohilDeakin, 218053209] (3 hours)
- - Tested the code to make sure that it was working and made the requirements.txt file. [Sohil Kaushal, SohilDeakin, 218053209] (1 hours)
+- Implemented the automatic dataset classifier that uses Microsoft's Bing API to fetch results of specified images from internet and place them under specified folders. [Sohil Kaushal, SohilDeakin, 218053209] (3 hours)
+- Tested the code to make sure that it was working and made the requirements.txt file. [Sohil Kaushal, SohilDeakin, 218053209] (1 hours)
+- Implemented a new machine learning model using the last model as a base and submitted a pull request for review. [Sohil Kaushal, SohilDeakin, 218053209] (4 hours)
+- Looked into the prospect of pull requests and noted the merge conflicts that were present. A way is needed to resolve these.[Sohil Kaushal, SohilDeakin, 218053209] (1 hours)
+
 
 # Week 10, Tuesday 14 May
 ### Total Hours: 11
