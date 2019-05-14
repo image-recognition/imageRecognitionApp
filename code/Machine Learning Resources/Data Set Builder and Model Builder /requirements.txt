@@ -1,2 +1,7 @@
+numpy
+scikit-learn
+matplotlib
+imutils
+keras
 cv2
 requests

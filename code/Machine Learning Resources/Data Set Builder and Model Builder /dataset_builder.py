@@ -5,8 +5,12 @@ import cv2
 import os
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument('-o', '--output', required=True, help="response to search using the Bing Search API")
-argument_parser.add_argument('-q', '--query', required=True, help="query to search using the Bing Search API")
+argument_parser.add_argument('-o', '--output',
+                             required=True,
+                             help="response to search using the Bing Search API")
+argument_parser.add_argument('-q', '--query',
+                             required=True,
+                             help="query to search using the Bing Search API")
 parser = vars(argument_parser.parse_args())
 
 API_KEY = "67c5fc9c7eff4705a55807f0edc8b355"
