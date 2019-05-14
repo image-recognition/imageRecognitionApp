@@ -15,7 +15,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
     
     var session: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput!
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer!
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
     //Using a variable for AppDelegate to use the shared data
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -30,6 +30,47 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    /*
+     viewWillDisappear:
+        This is an internal function. Notifies the view controller that its view is about to be removed from a view hierarchy.
+     Parameters:
+        animated:
+            If true, the disappearance of the view is being animated.
+     Returns:
+        This function does not return any value.
+     */
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.session.stopRunning()
+    }
+    
+    /*
+     didReceiveMemoryWarning:
+        This is an internal function. Sent to the view controller when the app receives a memory warning.
+     Parameters:
+        None
+     Returns:
+        This function does not return any value.
+     */
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    /*
+     showAlert:
+        Used to display errors as alerts.
+     Parameters:
+        error:
+        Error message to be displayed.
+     Returns:
+        This function does not return any value.
+     */
+    func showAlert(_ error: String) {
+        let alert = UIAlertController(title: "Error!", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     /*
@@ -59,7 +100,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
                 appDelegate.listObjects.append(saveObject)
             }
         } catch let error as NSError {
-            print("Could not save object. \(error), \(error.userInfo)")
+            showAlert("Could not save object. \(error), \(error.userInfo)")
         }
     }
     
@@ -89,6 +130,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
     //Variable for the still image view
     @IBOutlet weak var capturedImageView: UIImageView!
     
+    //Variable for the label used for the recognised objects
     @IBOutlet weak var recognisedObject: UILabel!
     
     /*
@@ -101,10 +143,68 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         This function does not return any value.
      */
     @IBAction func takePicture(_ sender: Any) {
+        
+        //Settings for camera while taking a picture
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        settings.isAutoStillImageStabilizationEnabled = true
+        settings.flashMode = .auto
+        
+        //Setting the orientation of the image
+        switch (UIDevice.current.orientation) {
+        case .landscapeLeft: stillImageOutput.connection(with: AVMediaType.video)?.videoOrientation = .landscapeRight
+            break
+        case .portrait: stillImageOutput.connection(with: AVMediaType.video)?.videoOrientation = .portrait
+            break
+        case .landscapeRight: stillImageOutput.connection(with: AVMediaType.video)?.videoOrientation = .landscapeLeft
+            break
+        default: stillImageOutput.connection(with: AVMediaType.video)?.videoOrientation = .portrait
+            break
+        }
+        
         stillImageOutput?.capturePhoto(with: settings, delegate: self)
         
+        //Save the recognised object in history
         self.save(object: "HistoryObject", name: self.recognisedObject.text!)
+    }
+    
+    /*
+     updateOrientation:
+        Used to update the orientation of the camera according to the device orientation.
+     Parameters:
+        layer:
+            The layer of type AVCaptureVideoPreviewLayer on which the orientation has to be applied.
+        orientation:
+            The orientation to be set.
+     Returns:
+        This function does not return any value.
+     */
+    private func updateOrientation(layer: AVCaptureVideoPreviewLayer, orientation: AVCaptureVideoOrientation) {
+        layer.connection?.videoOrientation = orientation
+    }
+    
+    /*
+     viewDidLayoutSubviews:
+        This is an internal function. Called to notify the view controller that its view has just laid out its subviews.
+     Parameters:
+        None
+     Returns:
+        This function does not return any value.
+     */
+    override func viewDidLayoutSubviews() {
+        let deviceOrientation = UIDevice.current.orientation
+        
+        if (videoPreviewLayer != nil) {
+            switch (deviceOrientation) {
+            case .landscapeLeft: updateOrientation(layer: videoPreviewLayer!, orientation: .landscapeRight)
+                break
+            case .portrait: updateOrientation(layer: videoPreviewLayer!, orientation: .portrait)
+                break
+            case .landscapeRight: updateOrientation(layer: videoPreviewLayer!, orientation: .landscapeLeft)
+                break
+            default: updateOrientation(layer: videoPreviewLayer!, orientation: .portrait)
+                break
+            }
+        }
     }
     
     /*
@@ -124,6 +224,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         session.sessionPreset = .medium
         var error: NSError?
 
+        //Check if the camera is available
         let available = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back).devices
         
         do {
@@ -144,13 +245,15 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
             if session!.canAddOutput(stillImageOutput!) {
                 session!.addOutput(stillImageOutput!)
                 
+                //Setting the camera to fill the entire view
                 videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
-                videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+                videoPreviewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
                 
-                cameraView.layer.addSublayer(videoPreviewLayer)
-                
+                //Append the camera to the view
+                cameraView.layer.addSublayer(videoPreviewLayer!)
                 captureOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "vidQueue"))
                 
+                //Start the session
                 DispatchQueue.global(qos: .userInitiated).async {
                     self.session!.startRunning()
                 }
@@ -161,18 +264,6 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         DispatchQueue.main.async {
             self.videoPreviewLayer?.frame = self.cameraView!.bounds
         }
-    }
-    
-    /*
-     didReceiveMemoryWarning:
-        This is an internal function. Sent to the view controller when the app receives a memory warning.
-     Parameters:
-        None
-     Returns:
-        This function does not return any value.
-     */
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     /*
@@ -206,19 +297,5 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {  return  }
         
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
-    }
-    
-    /*
-     viewWillDisappear:
-        This is an internal function. Notifies the view controller that its view is about to be removed from a view hierarchy.
-     Parameters:
-        animated:
-            If true, the disappearance of the view is being animated.
-     Returns:
-        This function does not return any value.
-     */
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.session.stopRunning()
     }
 }

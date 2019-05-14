@@ -124,6 +124,7 @@ class ListViewController: UITableViewController {
                 let nameToSave = textField.text else {
                     return
             }
+            
             if textField.text?.isEmpty ?? true {
                 return
             }
