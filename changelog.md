@@ -177,5 +177,16 @@
 ### Total Hours: 4
 *Please note these changes were made on the MachineLearning branch you can see these changes by using the following command*
 `git checkout branch_name`
- - Implemented the lautomatic dataset classifier that uses Microsoft's Bing API to featch results of specified images from internet and place them under specified folders. [Shubham Jindal, Jindalsh, 218053165], [Sohil Kaushal, SohilDeakin, 218053209] (3 hours)
+ - Implemented the lautomatic dataset classifier that uses Microsoft's Bing API to featch results of specified images from internet and place them under specified folders. [Sohil Kaushal, SohilDeakin, 218053209] (3 hours)
  - Tested the code to make sure that it was working and made the requirements.txt file. [Sohil Kaushal, SohilDeakin, 218053209] (1 hours)
+
+# Week 10, Tuesday 14 May
+### Total Hours: 11
+- Fetch the results of images for the dataset. [Shubham Jindal, Jindalsh, 218053165] (2 hours)
+- Fix the bug which was preventing the list table view from reloading after adding a new item. [Shubham Jindal, Jindalsh, 218053165] (2.5 hours)
+- Adding different constraints to support landscape view so that the landscape view is different from the portrait view. [Shubham Jindal, Jindalsh, 218053165] (4.25 hours)
+- Adding comments for the created functions as well as some previous functions. [Shubham Jindal, Jindalsh, 218053165] (0.5 hours)
+- Adding autoflash and auto image stablisation to the capture settings which will be used when the image is captured. [Shubham Jindal, Jindalsh, 218053165] (0.5 hours)
+- Adding the captured objects to the history. [Shubham Jindal, Jindalsh, 218053165] (0.5 hours)
+- Implementing error handling in main view controller. [Shubham Jindal, Jindalsh, 218053165] (0.25 hours)
+- Some UI changes. [Shubham Jindal, Jindalsh, 218053165] (0.5 hours)
