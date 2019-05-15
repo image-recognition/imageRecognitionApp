@@ -16,10 +16,20 @@ class Settings: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     @IBOutlet weak var selectedFlashMode: UISegmentedControl!
-    @IBOutlet weak var DarkModeState: UISwitch!
+    @IBOutlet weak var darkModeState: UISwitch!
+    @IBOutlet weak var imageStabilisationState: UISwitch!
     
     override func viewWillAppear(_ animated: Bool) {
-        switch appDelegate.defaults.string(forKey: "flash") {
+        let settings = appDelegate.defaults
+        
+        if settings.string(forKey: "darkMode") == "true" {
+            self.view.backgroundColor = UIColor.black
+            selectedFlashMode.tintColor = UIColor.white
+        } else {
+            self.view.backgroundColor = UIColor(hex: 0x809AD6)
+            selectedFlashMode.tintColor = UIColor.black
+        }
+        switch settings.string(forKey: "flash") {
         case "false":
             selectedFlashMode.selectedSegmentIndex = 0
         case "true":
@@ -27,31 +37,64 @@ class Settings: UIViewController {
         case "auto":
             selectedFlashMode.selectedSegmentIndex = 2
         default:
-            selectedFlashMode.selectedSegmentIndex = 0
+            selectedFlashMode.selectedSegmentIndex = 2
+        }
+        
+        switch settings.string(forKey: "imageStablisation") {
+        case "true":
+            imageStabilisationState.isOn = true
+        case "false":
+            imageStabilisationState.isOn = false
+        default:
+            imageStabilisationState.isOn = true
+        }
+        
+        switch settings.string(forKey: "darkMode") {
+        case "true":
+            darkModeState.isOn = true
+        case "false":
+            darkModeState.isOn = false
+        default:
+            darkModeState.isOn = true
         }
     }
     
     @IBAction func flashMode(_ sender: Any) {
+        let settings = appDelegate.defaults
         switch selectedFlashMode.selectedSegmentIndex {
         case 0:
-            appDelegate.defaults.set("false", forKey: "flash")
+            settings.set("false", forKey: "flash")
         case 1:
-            appDelegate.defaults.set("true", forKey: "flash")
+            settings.set("true", forKey: "flash")
         case 2:
-            appDelegate.defaults.set("auto", forKey: "flash")
+            settings.set("auto", forKey: "flash")
         default:
-            appDelegate.defaults.set("auto", forKey: "flash")
+            settings.set("auto", forKey: "flash")
         }
     }
     
     @IBAction func DarkModeOnOff(_ sender: Any) {
-        if DarkModeState.isOn {
+        let settings = appDelegate.defaults
+        if darkModeState.isOn {
+            settings.set("true", forKey: "darkMode")
             self.view.backgroundColor = UIColor.black
+            selectedFlashMode.tintColor = UIColor.white
         } else {
+            settings.set("false", forKey: "darkMode")
             self.view.backgroundColor = UIColor(hex: 0x809AD6)
-            
+            selectedFlashMode.tintColor = UIColor.black
         }
     }
+    
+    @IBAction func ImageStabilisation(_ sender: Any) {
+        let settings = appDelegate.defaults
+        if imageStabilisationState.isOn {
+            settings.set("true", forKey: "imageStabilisation")
+        } else {
+            settings.set("false", forKey: "imageStabilisation")
+        }
+    }
+    
 }
 
 extension UIColor {

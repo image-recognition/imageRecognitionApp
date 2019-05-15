@@ -17,8 +17,19 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
     var stillImageOutput: AVCapturePhotoOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
+    @IBOutlet weak var captureButton: UIButton!
+    @IBOutlet weak var recognisedObjectLabel: UILabel!
+    
     //Using a variable for AppDelegate to use the shared data
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if appDelegate.defaults.string(forKey: "darkMode") == "true" {
+            return .lightContent
+        } else {
+            return .default
+        }
+    }
     
     /*
      viewDidLoad:
@@ -30,6 +41,38 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let settings = appDelegate.defaults
+        if settings.string(forKey: "flash") == nil {
+            settings.set("auto", forKey: "flash")
+        }
+        
+        if settings.string(forKey: "imageStabilisation") == nil {
+            settings.set("true", forKey: "imageStabilisation")
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let settings = appDelegate.defaults
+        let darkMode = settings.string(forKey: "darkMode")
+        if darkMode == nil {
+            settings.set("false", forKey: "darkMode")
+        } else if darkMode == "true" {
+            self.view.backgroundColor = UIColor.black
+            self.cameraView.backgroundColor = UIColor.black
+            self.imageViewContainer.backgroundColor = UIColor.black
+            self.capturedImageView.backgroundColor = UIColor.black
+            self.captureButton.setTitleColor(UIColor.white, for: .normal)
+            self.recognisedObjectLabel.textColor = UIColor.white
+        } else if darkMode == "false" {
+            self.view.backgroundColor = UIColor(hex: 0x809AD6)
+            self.cameraView.backgroundColor = UIColor(hex: 0x809AD6)
+            self.imageViewContainer.backgroundColor = UIColor(hex: 0x809AD6)
+            self.capturedImageView.backgroundColor = UIColor(hex: 0x809AD6)
+            self.captureButton.setTitleColor(UIColor(hex: 0x942192), for: .normal)
+            self.recognisedObjectLabel.textColor = UIColor.black
+        }
     }
     
     /*
@@ -158,7 +201,13 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         } else {
             settings.flashMode = .off
         }
-        settings.isAutoStillImageStabilizationEnabled = true
+        
+        if appDelegate.defaults.string(forKey: "imageStabilisation") == "true" || appDelegate.defaults.string(forKey: "imageStabilisation") == nil {
+            settings.isAutoStillImageStabilizationEnabled = true
+        } else {
+            settings.isAutoStillImageStabilizationEnabled = false
+        }
+        
         
         
         //Setting the orientation of the image

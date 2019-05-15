@@ -26,7 +26,17 @@ class HistoryViewController: UITableViewController {
         This function does not return any value.
     */
     override func viewWillAppear(_ animated: Bool) {
+        //Dark Mode setting
+        let settings = appDelegate.defaults
+        if settings.string(forKey: "darkMode") == "true" {
+            self.tableView.backgroundColor = UIColor.black
+            self.tableView.separatorColor = UIColor.lightGray
+        } else {
+            self.tableView.backgroundColor = UIColor(hex: 0x809AD6)
+            self.tableView.separatorColor = UIColor.black
+        }
         
+        //Populating the tableView
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "HistoryObject")
@@ -98,6 +108,17 @@ class HistoryViewController: UITableViewController {
         //Configure the cell
         let object = historyObjects[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableCell", for: indexPath)
+        
+        if appDelegate.defaults.string(forKey: "darkMode") == "true" {
+            cell.backgroundColor = UIColor.black
+            cell.contentView.backgroundColor = UIColor.black
+            cell.textLabel?.textColor = UIColor.lightGray
+        } else {
+            cell.backgroundColor = UIColor(hex: 0x809AD6)
+            cell.contentView.backgroundColor = UIColor(hex: 0x809AD6)
+            cell.textLabel?.textColor = UIColor.black
+        }
+        
         cell.textLabel?.text = object.value(forKey: "name") as? String
         return cell
     }
