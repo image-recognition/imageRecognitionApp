@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ImageRecognitionApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="ImageRecognitionApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,6 +133,7 @@
                     <connections>
                         <outlet property="cameraView" destination="vc5-9R-llk" id="FHT-m3-HX2"/>
                         <outlet property="capturedImageView" destination="zYX-TY-Hbs" id="wAK-if-qYu"/>
+                        <outlet property="imageViewContainer" destination="Tue-mL-khN" id="6J4-bB-eWm"/>
                         <outlet property="recognisedObject" destination="SLs-lV-Q4W" id="tUB-lL-1wu"/>
                     </connections>
                 </viewController>
@@ -175,24 +176,44 @@
         <!--Settings-->
         <scene sceneID="FgU-JS-NTj">
             <objects>
-                <viewController id="ESc-3B-PPU" sceneMemberID="viewController">
+                <viewController id="ESc-3B-PPU" customClass="Settings" customModule="ImageRecognitionApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DoV-sU-c7J">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BVK-BQ-Hn3">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BVK-BQ-Hn3">
                                 <rect key="frame" x="193" y="147" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="DarkModeOnOff:" destination="ESc-3B-PPU" eventType="valueChanged" id="NWK-1O-9gQ"/>
+                                </connections>
                             </switch>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kyt-w8-Gd5">
+                                <rect key="frame" x="74" y="212" width="249" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Off"/>
+                                    <segment title="On"/>
+                                    <segment title="Auto"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="flashMode:" destination="ESc-3B-PPU" eventType="valueChanged" id="DPw-hK-skU"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.50196078431372548" green="0.60392156862745094" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="2UH-WL-E6y"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="FVf-Pd-scP"/>
+                    <connections>
+                        <outlet property="DarkModeState" destination="BVK-BQ-Hn3" id="KQA-BX-EhE"/>
+                        <outlet property="selectedFlashMode" destination="kyt-w8-Gd5" id="kld-jF-umh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7y-o5-wEP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2485.5999999999999" y="1918.2908545727139"/>
+            <point key="canvasLocation" x="2488.8000000000002" y="1917.3913043478262"/>
         </scene>
         <!--List-->
         <scene sceneID="6Hi-h3-aJZ">

@@ -119,7 +119,10 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
      */
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard let dataOfImage = photo.fileDataRepresentation()
-            else { return }
+            else {
+                showAlert("Cannot generate photo representation!")
+                return
+        }
         let image = UIImage(data: dataOfImage)
         capturedImageView.image = image
     }
@@ -127,6 +130,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
     //Variable for the camera view
     @IBOutlet weak var cameraView: UIView!
     
+    @IBOutlet weak var imageViewContainer: UIView!
     //Variable for the still image view
     @IBOutlet weak var capturedImageView: UIImageView!
     
@@ -146,8 +150,16 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         
         //Settings for camera while taking a picture
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        
+        if appDelegate.defaults.string(forKey: "flash") == "auto" || appDelegate.defaults.string(forKey: "flash") == nil {
+            settings.flashMode = .auto
+        } else if appDelegate.defaults.string(forKey: "flash") == "true" {
+            settings.flashMode = .on
+        } else {
+            settings.flashMode = .off
+        }
         settings.isAutoStillImageStabilizationEnabled = true
-        settings.flashMode = .auto
+        
         
         //Setting the orientation of the image
         switch (UIDevice.current.orientation) {
@@ -233,7 +245,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
             }
         } catch let error1 as NSError {
             error = error1
-            print(error!.localizedDescription)
+            showAlert(error!.localizedDescription)
         }
         
         let captureOutput = AVCaptureVideoDataOutput()
@@ -280,7 +292,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         This function does not return any value.
      */
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let model = try? VNCoreMLModel(for: MobileNet().model) else {  return  }
+        guard let model = try? VNCoreMLModel(for: object().model) else {  fatalError("Unable to convert to Vision Core ML Model")  }
         
         let request = VNCoreMLRequest(model: model) {   (finishedRequest, error) in
             guard let results = finishedRequest.results as? [VNClassificationObservation] else {  return  }
@@ -292,6 +304,10 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
             DispatchQueue.main.async(execute: {
                 self.recognisedObject.text = "\(predictionClass) \(predictionConfidence)%"
             })
+            
+            if error != nil {
+                self.showAlert(error as! String)
+            }
         }
         
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {  return  }
