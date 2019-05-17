@@ -108,6 +108,43 @@ The major features of our app are as follows:
 
 ### Application
 
+Below is a list of all the main classes with their main functions.
+
+#### ViewController
+Methods:
+##### viewDidLoad: Called when the view is loaded, default user settings for the first time are set here.
+- Parameters: None
+- Return: None
+
+##### viewWillAppear: Set the view according to dark mode setting.
+- Parameter: animated - If true, the view is being added to the window using an animation.
+- Return: None
+
+##### save: Used to save object names in the history or list.
+- Parameters:
+- object - list or history object in which the name has to be saved.
+- name - name of the object
+
+- Return: None
+
+##### photoOutput: Provides the delegate with the captured image and associated metadata resulting from a photo capture.
+- Parameters: 
+- captureOutput: The photo output performing the capture.
+- photo: An object containing the captured image pixel buffer, along with any metadata and attachments captured along with the photo (such as a preview image or depth map).
+- error: If the capture process could not proceed successfully, an error object describing the failure; otherwise, nil.
+
+- Return: None
+
+##### captureOutput: Notifies the delegate that a new video frame was written.
+- Parameters:
+- captureOutput: The capture output object.
+- sampleBuffer: A CMSampleBuffer object containing the video frame data and additional information about the frame, such as its format and presentation time.
+- connection: The connection from which the video was received.
+
+- Return: None
+
+#### The other classes of the project mostly contain the in-built functions used to populate the table views and cells.
+
 ### Machine Learning Model
 
 Since we used keras it gave us an high level API to tensorflow which made the process of designing the neural network much easier that what we originally anticipated.The main classes for the machine learning model is as follows:
