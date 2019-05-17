@@ -3,5 +3,5 @@ scikit-learn
 matplotlib
 imutils
 keras
-cv2
+opencv
 requests
