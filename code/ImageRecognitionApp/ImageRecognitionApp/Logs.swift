@@ -46,6 +46,20 @@ class Logs: UIViewController {
     }
     
     /*
+     viewDidLoad:
+        This function contains the code for the events that will occur after the view had been loaded.
+     Parameters:
+        None
+     Returns:
+        This function does not return any value.
+     */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        logArea.text = appDelegate.defaults.string(forKey: "logs")
+    }
+    
+    /*
      Dismiss:
         Used to dismiss the viewController.
      Parameters:
