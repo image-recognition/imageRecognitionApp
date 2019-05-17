@@ -1,0 +1,19 @@
+No external resources were used as such but following links were referred for
+making this application:
+1. Configuration the AWS instance: https://aws.amazon.com/ec2/getting-started/
+2. The Bing Search API was used to form the dataset used to train the model. https://docs.microsoft.com/en-us/azure/cognitive-services/bing-web-search/quickstarts/python
+3. Adrian Rosebrock for preconfigured AWS images.
+4. Tensorflow installation docs for installing the GPU Version.
+
+
+
+
+Libraries
+Item Name, License type, Author, Source Website
+Keras , The MIT License (MIT), François Chollet and others, https://keras.io
+numpy, New BSD License, Travis Oliphant, http://www.numpy.org
+scikit-learn, New BSD License, Pedregosa, F. and others, http://scikit-learn.org
+imutils, The MIT License (MIT), Adrian Rosebrock, https://pypi.org/project/imutils/
+coremltools, unknown(Apple uses its own custom license), Apple Inc, https://github.com/apple/coremltools
+opencv, BSD license, Bradski, G. and others, https://opencv.org
+requests, Apache License Version 2.0, Kenneth Reitz, https://2.python-requests.org/en/master/
