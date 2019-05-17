@@ -13,19 +13,20 @@ import CoreData
 class HistoryViewController: UITableViewController {
     var historyObjects: [NSManagedObject]!
     
+    //Using a variable for AppDelegate to use the shared data
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     /*
      viewWillAppear:
-        This is an in-built function. It is called before the view controller's view is about to a views hierarchy
-        and before any animations are configured for showing the view.
+        This is an internal function. It notifies the view controller that its view is about to be added to a view hierarchy.
      Parameters:
         animated:
-            if true, the view is added to the window using an animation.
+            If true, the view is being added to the window using an animation.
      Returns:
         This function does not return any value.
-    */
+     */
     override func viewWillAppear(_ animated: Bool) {
+        
         //Dark Mode setting
         let settings = appDelegate.defaults
         if settings.string(forKey: "darkMode") == "true" {
@@ -44,7 +45,10 @@ class HistoryViewController: UITableViewController {
         do {
             appDelegate.historyObjects = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            var logs = appDelegate.defaults.string(forKey: "logs")
+            logs = logs ?? "" + "\n- Could not fetch. \(error), \(error.userInfo)"
+            appDelegate.defaults.set(logs, forKey: "logs")
+            showAlert("Could not fetch. \(error), \(error.userInfo)")
         }
         historyObjects = appDelegate.historyObjects
         self.tableView.reloadData()
@@ -131,6 +135,8 @@ class HistoryViewController: UITableViewController {
             Error message to be displayed.
      Returns:
         This function does not return any value.
+     Example of calling:
+        showAlert("error message to be displayed")
      */
     func showAlert(_ error: String) {
         let alert = UIAlertController(title: "Error!", message: error, preferredStyle: .alert)
@@ -164,9 +170,39 @@ class HistoryViewController: UITableViewController {
             do {
                 try managedContext.save()
             } catch let error as NSError {
+                var logs = appDelegate.defaults.string(forKey: "logs")
+                logs = logs ?? "" + "\n- Could not save. \(error), \(error.userInfo)"
+                appDelegate.defaults.set(logs, forKey: "logs")
                 showAlert("Could not save. \(error), \(error.userInfo)")
             }
         }
         self.tableView.reloadData()
+    }
+    
+    /*
+     tableView(_:leadingSwipeActionsConfigurationForRowAt:)
+        Returns the swipe actions to display on the leading edge of the row.
+     Parameters:
+        tableView:
+            The table view containing the row.
+        indexPath:
+            The index path of the row.
+     Returns:
+        The swipe actions to display next to the leading edge of the row. Return nil if you want the table to display the default set of actions.
+     */
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        //Save the history object in the list
+        let closeAction = UIContextualAction(style: .normal, title:  "Close", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            let cell = tableView.cellForRow(at: indexPath)
+            let objectLabel = cell?.textLabel?.text
+            var objectName = objectLabel?.components(separatedBy: ",")
+            ViewController().save(object: "ListObject", name: "\(objectName![0])")
+            success(true)
+        })
+        closeAction.title = "Add to list"
+        closeAction.backgroundColor = UIColor(hex: 0x942192)
+        
+        return UISwipeActionsConfiguration(actions: [closeAction])
     }
 }

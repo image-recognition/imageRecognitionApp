@@ -18,11 +18,10 @@ class ListViewController: UITableViewController {
     
     /*
      viewWillAppear:
-         This is an in-built function. It is called before the view controller's view is about to a views hierarchy
-         and before any animations are configured for showing the view.
+        This is an internal function. It notifies the view controller that its view is about to be added to a view hierarchy.
      Parameters:
-         animated:
-             if true, the view is added to the window using an animation.
+        animated:
+            If true, the view is being added to the window using an animation.
      Returns:
         This function does not return any value.
      */
@@ -46,7 +45,10 @@ class ListViewController: UITableViewController {
         do {
             appDelegate.listObjects = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            var logs = appDelegate.defaults.string(forKey: "logs")
+            logs = logs ?? "" + "\n- Could not fetch. \(error), \(error.userInfo)"
+            appDelegate.defaults.set(logs, forKey: "logs")
+            showAlert("Could not fetch. \(error), \(error.userInfo)")
         }
         listObjects = appDelegate.listObjects
         
@@ -175,6 +177,8 @@ class ListViewController: UITableViewController {
             Error message to be displayed.
      Returns:
         This function does not return any value.
+     Example of calling:
+        showAlert("error message to be displayed")
      */
     func showAlert(_ error: String) {
         let alert = UIAlertController(title: "Error!", message: error, preferredStyle: .alert)
@@ -209,10 +213,11 @@ class ListViewController: UITableViewController {
             do {
                 try managedContext.save()
             } catch let error as NSError {
+                var logs = appDelegate.defaults.string(forKey: "logs")
+                logs = logs ?? "" + "\n- Could not save. \(error), \(error.userInfo)"
+                appDelegate.defaults.set(logs, forKey: "logs")
                 showAlert("Could not save. \(error), \(error.userInfo)")
             }
         }
     }
-    
-    
 }

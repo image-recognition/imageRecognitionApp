@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		512C1581228CF77800594AA0 /* object.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 512C1580228CF77800594AA0 /* object.mlmodel */; };
 		512FEB07228BB13A007C38C2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512FEB06228BB13A007C38C2 /* Settings.swift */; };
 		519157E422598D67002123CF /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519157E322598D67002123CF /* HistoryViewController.swift */; };
 		519157E6225995C4002123CF /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519157E5225995C4002123CF /* ListViewController.swift */; };
 		519F64D5226608BB00DC8328 /* History.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 519F64D3226608BB00DC8328 /* History.xcdatamodeld */; };
-		51C7AD15228962B90035FFC8 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 51C7AD14228962B90035FFC8 /* MobileNet.mlmodel */; };
+		51E4E7A7228E39DF00EC71A4 /* object.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 51E4E7A6228E39DF00EC71A4 /* object.mlmodel */; };
+		51E4E7A9228E503100EC71A4 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E4E7A8228E503100EC71A4 /* Logs.swift */; };
 		51E99308224DCE8100767443 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E99307224DCE8100767443 /* AppDelegate.swift */; };
 		51E9930A224DCE8100767443 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E99309224DCE8100767443 /* ViewController.swift */; };
 		51E9930D224DCE8100767443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E9930B224DCE8100767443 /* Main.storyboard */; };
@@ -21,12 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		512C1580228CF77800594AA0 /* object.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = object.mlmodel; sourceTree = "<group>"; };
 		512FEB06228BB13A007C38C2 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		519157E322598D67002123CF /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		519157E5225995C4002123CF /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		519F64D4226608BB00DC8328 /* History.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = History.xcdatamodel; sourceTree = "<group>"; };
-		51C7AD14228962B90035FFC8 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
+		51E4E7A6228E39DF00EC71A4 /* object.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = object.mlmodel; sourceTree = "<group>"; };
+		51E4E7A8228E503100EC71A4 /* Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
 		51E99304224DCE8100767443 /* ImageRecognitionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageRecognitionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E99307224DCE8100767443 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51E99309224DCE8100767443 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,14 +66,14 @@
 		51E99306224DCE8100767443 /* ImageRecognitionApp */ = {
 			isa = PBXGroup;
 			children = (
-				51C7AD14228962B90035FFC8 /* MobileNet.mlmodel */,
-				512C1580228CF77800594AA0 /* object.mlmodel */,
+				51E4E7A6228E39DF00EC71A4 /* object.mlmodel */,
 				51E99307224DCE8100767443 /* AppDelegate.swift */,
 				51E99309224DCE8100767443 /* ViewController.swift */,
 				519157E322598D67002123CF /* HistoryViewController.swift */,
 				519F64D3226608BB00DC8328 /* History.xcdatamodeld */,
 				519157E5225995C4002123CF /* ListViewController.swift */,
 				512FEB06228BB13A007C38C2 /* Settings.swift */,
+				51E4E7A8228E503100EC71A4 /* Logs.swift */,
 				51E9930B224DCE8100767443 /* Main.storyboard */,
 				51E9930E224DCE8100767443 /* Assets.xcassets */,
 				51E99310224DCE8100767443 /* LaunchScreen.storyboard */,
@@ -158,9 +158,9 @@
 				51E99308224DCE8100767443 /* AppDelegate.swift in Sources */,
 				512FEB07228BB13A007C38C2 /* Settings.swift in Sources */,
 				519157E6225995C4002123CF /* ListViewController.swift in Sources */,
+				51E4E7A9228E503100EC71A4 /* Logs.swift in Sources */,
 				519F64D5226608BB00DC8328 /* History.xcdatamodeld in Sources */,
-				512C1581228CF77800594AA0 /* object.mlmodel in Sources */,
-				51C7AD15228962B90035FFC8 /* MobileNet.mlmodel in Sources */,
+				51E4E7A7228E39DF00EC71A4 /* object.mlmodel in Sources */,
 				519157E422598D67002123CF /* HistoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

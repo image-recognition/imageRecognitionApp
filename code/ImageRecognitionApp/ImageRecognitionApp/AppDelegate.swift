@@ -14,9 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    //Variable to store the objects in history
     var historyObjects: [NSManagedObject] = []
+    
+    //Variable to store the objects in the list
     var listObjects: [NSManagedObject] = []
 
+    //Store the user settings
     var defaults = UserDefaults.standard
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -91,7 +95,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
-
 }
 

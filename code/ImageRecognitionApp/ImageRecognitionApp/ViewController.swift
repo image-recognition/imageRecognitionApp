@@ -23,6 +23,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
     //Using a variable for AppDelegate to use the shared data
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    //Overriding the status bar style according to theme
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if appDelegate.defaults.string(forKey: "darkMode") == "true" {
             return .lightContent
@@ -42,6 +43,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Setting the user settings for the first time
         let settings = appDelegate.defaults
         if settings.string(forKey: "flash") == nil {
             settings.set("auto", forKey: "flash")
@@ -51,9 +53,24 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
             settings.set("true", forKey: "imageStabilisation")
         }
         
+        if settings.string(forKey: "logs") == nil {
+            settings.set("", forKey: "logs")
+        }
+        
     }
     
+    /*
+     viewWillAppear:
+        This is an internal function. Notifies the view controller that its view is about to be added to a view hierarchy.
+     Parameters:
+        animated:
+            If true, the view is being added to the window using an animation.
+     Returns:
+        This function does not return any value.
+     */
     override func viewWillAppear(_ animated: Bool) {
+        
+        //Dark Mode setting
         let settings = appDelegate.defaults
         let darkMode = settings.string(forKey: "darkMode")
         if darkMode == nil {
@@ -63,8 +80,8 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
             self.cameraView.backgroundColor = UIColor.black
             self.imageViewContainer.backgroundColor = UIColor.black
             self.capturedImageView.backgroundColor = UIColor.black
-            self.captureButton.setTitleColor(UIColor.white, for: .normal)
-            self.recognisedObjectLabel.textColor = UIColor.white
+            self.captureButton.setTitleColor(UIColor.lightGray, for: .normal)
+            self.recognisedObjectLabel.textColor = UIColor.lightGray
         } else if darkMode == "false" {
             self.view.backgroundColor = UIColor(hex: 0x809AD6)
             self.cameraView.backgroundColor = UIColor(hex: 0x809AD6)
@@ -109,6 +126,8 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         Error message to be displayed.
      Returns:
         This function does not return any value.
+     Example of calling:
+        showAlert("error message to be displayed")
      */
     func showAlert(_ error: String) {
         let alert = UIAlertController(title: "Error!", message: error, preferredStyle: .alert)
@@ -118,12 +137,15 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
     
     /*
      save:
-        This function is used to save mock data into the core data for the history viewController.
+        This function is used to save data into the core data for the history or the list tableViewController.
      Parameters:
         name:
             A string parameter which is a name of the object to be stored in the history.
      Returns:
         This function does not return any value.
+     Examples of calling:
+        save(object: "HistoryObject", name: "Orange")
+        save(object: "ListObject", name: "Apple")
      */
     func save(object: String, name: String) {
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -143,6 +165,9 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
                 appDelegate.listObjects.append(saveObject)
             }
         } catch let error as NSError {
+            var logs = appDelegate.defaults.string(forKey: "logs")
+            logs = logs ?? "" + "\n- Could not save object. \(error), \(error.userInfo)"
+            appDelegate.defaults.set(logs, forKey: "logs")
             showAlert("Could not save object. \(error), \(error.userInfo)")
         }
     }
@@ -163,6 +188,9 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard let dataOfImage = photo.fileDataRepresentation()
             else {
+                var logs = appDelegate.defaults.string(forKey: "logs")
+                logs = logs ?? "" + "\n- Cannot generate photo representation!"
+                appDelegate.defaults.set(logs, forKey: "logs")
                 showAlert("Cannot generate photo representation!")
                 return
         }
@@ -265,6 +293,10 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
             default: updateOrientation(layer: videoPreviewLayer!, orientation: .portrait)
                 break
             }
+            videoPreviewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            DispatchQueue.main.async {
+                self.videoPreviewLayer?.frame = self.cameraView!.bounds
+            }
         }
     }
     
@@ -294,6 +326,9 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
             }
         } catch let error1 as NSError {
             error = error1
+            var logs = appDelegate.defaults.string(forKey: "logs")
+            logs = logs ?? "" + "\n- \(error!.localizedDescription)"
+            appDelegate.defaults.set(logs, forKey: "logs")
             showAlert(error!.localizedDescription)
         }
         
@@ -341,7 +376,12 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
         This function does not return any value.
      */
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let model = try? VNCoreMLModel(for: object().model) else {  fatalError("Unable to convert to Vision Core ML Model")  }
+        guard let model = try? VNCoreMLModel(for: object().model) else {
+            var logs = appDelegate.defaults.string(forKey: "logs")
+            logs = logs ?? "" + "\n- Unable to convert to Vision Core ML Model"
+            appDelegate.defaults.set(logs, forKey: "logs")
+            fatalError("Unable to convert to Vision Core ML Model")
+        }
         
         let request = VNCoreMLRequest(model: model) {   (finishedRequest, error) in
             guard let results = finishedRequest.results as? [VNClassificationObservation] else {  return  }
@@ -351,11 +391,14 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCapture
             let predictionConfidence = String(format: "%.02f%", observation.confidence * 100)
             
             DispatchQueue.main.async(execute: {
-                self.recognisedObject.text = "\(predictionClass) \(predictionConfidence)%"
+                self.recognisedObject.text = "\(predictionClass), \(predictionConfidence)%"
             })
             
             if error != nil {
-                self.showAlert(error as! String)
+                var logs = self.appDelegate.defaults.string(forKey: "logs")
+                logs = logs ?? "" + "\n- \(String(describing: error))"
+                self.appDelegate.defaults.set(logs, forKey: "logs")
+                self.showAlert("\(String(describing: error))")
             }
         }
         
